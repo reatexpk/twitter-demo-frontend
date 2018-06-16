@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Icon_Magnifier from "./img/Icon_Magnifier.svg";
+import iconMagnifier from "./img/Icon_Magnifier.svg";
 
 const NavRight = styled.div`
   display: inline-block;
@@ -32,7 +32,7 @@ const SearchButton = styled.span`
   right: 12px;
   width: 15px;
   height: 15px;
-  background: url(${Icon_Magnifier}) no-repeat;
+  background: url(${iconMagnifier}) no-repeat;
   cursor: pointer;
 `;
 

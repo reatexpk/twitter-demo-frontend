@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Icon_Pinned from "./img/Icon_Pinned.svg";
+import iconPinned from "./img/Icon_Pinned.svg";
 import Tweet from "./Tweet";
 
 const StyledTweets = styled.section`
@@ -63,7 +63,7 @@ const Feed = () => {
         </Link>
       </TweetsTabs>
       <PinnedTweet>
-        <PinnedIcon src={Icon_Pinned} />
+        <PinnedIcon src={iconPinned} />
         <PinnedText>Pinned Tweet</PinnedText>
       </PinnedTweet>
 

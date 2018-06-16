@@ -110,9 +110,9 @@ class Tweet extends React.Component {
             </TweetHeader>
             <TweetText>
               We’ve made some more resources for all you wonderful{" "}
-              <a href="#">#design</a> folk
-              <a href="#"> everyinteraction.com/resources/</a>
-              <a href="#"> #webdesign</a> <a href="#">#UI</a>
+              <a href="">#design</a> folk
+              <a href=""> everyinteraction.com/resources/</a>
+              <a href=""> #webdesign</a> <a href="">#UI</a>
             </TweetText>
             <Tweet1 src={Tweet1_Image} />
           </TweetBody>
@@ -129,7 +129,7 @@ class Tweet extends React.Component {
             </TweetHeader>
             <TweetText>
               Our new website concept; Taking you from… @ Every Interaction{" "}
-              <a href="#">instagram.com/p/BNFGrfhBP3M/</a>
+              <a href="">instagram.com/p/BNFGrfhBP3M/</a>
             </TweetText>
           </TweetBody>
         </TweetConatiner>
