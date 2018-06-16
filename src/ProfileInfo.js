@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Tick from "./img/Tick.png";
-import IconLocation from "./img/Icon_Location.svg";
-import IconLink from "./img/Icon_Link.svg";
-import IconJoined from "./img/Icon_Joined.svg";
+import tick from "./img/Tick.png";
+import iconLocation from "./img/Icon_Location.svg";
+import iconLink from "./img/Icon_Link.svg";
+import iconJoined from "./img/Icon_Joined.svg";
 
 const StyledProfileInfo = styled.section`
   position: relative;
@@ -84,9 +84,9 @@ const Icon = styled.img`
 
 const ProfileInfoIcon = props => {
   if (props.use === "location")
-    return <Icon src={IconLocation} alt="Location" />;
-  else if (props.use === "url") return <Icon src={IconLink} alt="URL" />;
-  else return <Icon src={IconJoined} alt="URL" />;
+    return <Icon src={iconLocation} alt="Location" />;
+  else if (props.use === "url") return <Icon src={iconLink} alt="URL" />;
+  else return <Icon src={iconJoined} alt="URL" />;
 };
 
 const Actions = styled.div`
@@ -114,7 +114,7 @@ const ProfileInfo = () => {
       <AvoidWrapper>
         <HeaderWrapper>
           <Header>Every Interaction</Header>
-          <VerificationTick src={Tick} />
+          <VerificationTick src={tick} />
         </HeaderWrapper>
         <div>
           <Username>@EveryInteract</Username>
