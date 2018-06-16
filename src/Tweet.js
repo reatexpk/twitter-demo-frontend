@@ -15,7 +15,6 @@ const PinnedIcon = styled.img`
 const PinnedText = styled.p`
   margin: 0 12px;
   font-size: 12px;
-  letter-spacing: -0.175385px;
   color: #707e88;
 `;
 
@@ -42,7 +41,6 @@ const Info = styled.p`
   padding: 0;
   line-height: 21px;
   font-size: 14px;
-  letter-spacing: -0.219231px;
   color: #697787;
 `;
 
@@ -50,7 +48,6 @@ const Poster = styled.h6`
   margin: 0;
   line-height: 30px;
   font-size: 15px;
-  letter-spacing: -0.219231px;
   color: #292f33;
 `;
 
@@ -66,22 +63,11 @@ const TextSmall = styled.div`
   margin-bottom: 17px;
   line-height: 22px;
   font-size: 16px;
-  letter-spacing: -0.219231px;
   color: #292f33;
 `;
 
 const Attachment = styled.img`
   max-width: 487px;
-`;
-
-const Tweet1 = styled.img`
-  width: 487px;
-  height: 253px;
-`;
-const Tweet3 = styled.img`
-  width: 126px;
-  height: 126px;
-  margin-right: 9px;
 `;
 
 const PreviewWrapper = styled.div`
@@ -92,28 +78,24 @@ const PreviewWrapper = styled.div`
 const PreviewBlock = styled.div`
   line-height: 22px;
   font-size: 15px;
-  letter-spacing: -0.219231px;
   color: #000000;
 `;
 const PreviewBlockHeader = styled.h6`
   margin: 0;
   line-height: 22px;
   font-size: 15px;
-  letter-spacing: -0.219231px;
   color: #000000;
 `;
 const PreviewBlockParag = styled.p`
   margin: 0;
   line-height: 22px;
   font-size: 15px;
-  letter-spacing: -0.219231px;
   color: #000000;
 `;
 const PreviewBlockSource = styled.p`
   margin: 0;
   line-height: 22px;
   font-size: 15px;
-  letter-spacing: -0.219231px;
   color: #697787;
 `;
 
