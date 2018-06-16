@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Icon_More from "./img/Icon_More.png";
+import iconMore from "./img/Icon_More.png";
 
 const StyledUserActions = styled.div`
   align-self: center;
@@ -22,7 +22,7 @@ const IconMore = styled.button`
   border: none;
   border-radius: 100px;
   vertical-align: middle;
-  background: url(${Icon_More}) no-repeat center;
+  background: url(${iconMore}) no-repeat center;
   cursor: pointer;
 `;
 
