@@ -53,10 +53,11 @@ const Feed = () => {
         type="common"
         text="We’ve made some more resources for all you wonderful #design folk everyinteraction.com/resources/ #webdesign #UI"
         attachment="Tweet1.png"
-        likes="47"
+        loves="47"
         retweets="17"
-        comments="0"
+        comments=""
         pinned
+        loved
       />
 
       <Tweet
@@ -66,7 +67,7 @@ const Feed = () => {
         date="23h"
         type="common"
         text="Our new website concept; Taking you from… @ Every Interaction instagram.com/p/BNFGrfhBP3M/"
-        likes="2"
+        loves="2"
         retweets="3"
         comments="1"
       />
@@ -78,9 +79,12 @@ const Feed = () => {
         date="Nov 18"
         type="share"
         text="Variable web fonts are coming, and will open a world of opportunities for weight use online"
-        likes="0"
+        previewHeader="The Future of Web Fonts"
+        previewText="We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…"
+        previewSource="vilijamis.com"
+        loves="0"
         retweets="0"
-        comments="0"
+        comments=""
       />
     </StyledFeed>
   );
