@@ -64,10 +64,11 @@ const Location = styled.div`
   font-size: 14px;
   color: #657786;
 `;
-const URL = styled.div`
+const Link = styled.a`
   line-height: 28px;
   font-size: 14px;
   color: #657786;
+  text-decoration: none;
 `;
 const JoinDate = styled.div`
   line-height: 28px;
@@ -121,10 +122,10 @@ const ProfileInfo = () => {
           <Icon src={iconLocation} alt="Location" />
           <span>London, UK</span>
         </Location>
-        <URL>
+        <Link href="everyinteraction.com">
           <Icon src={iconLink} alt="Link" />
           <span>everyinteraction.com</span>
-        </URL>
+        </Link>
         <JoinDate>
           <Icon src={iconJoined} alt="Joined" />
           <span>Joined May 2008</span>
