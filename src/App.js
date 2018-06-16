@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Header from "./Header";
 import Navigation from "./Navigation";
 import TwitterLogo from "./TwitterLogo";
+import logo from "./img/Icon_ Twitter Logo.svg";
 import NavigationRight from "./NavigationRight";
 
 import CoverImage from "./CoverImage";
@@ -48,7 +49,7 @@ export default class App extends Component {
           <div className="container">
             <HeaderWrapper>
               <Navigation />
-              <TwitterLogo />
+              <TwitterLogo src={logo} alt="Twitter Logo" />
               <NavigationRight />
             </HeaderWrapper>
           </div>
