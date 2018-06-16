@@ -52,6 +52,11 @@ export default class App extends Component {
   render() {
     return (
       <StyledApp>
+        <Router>
+          <Route exact path="/">
+            <Redirect to="/EveryInteraction" />
+          </Route>
+        </Router>
         <Helmet>
           <meta charSet="utf-8" />
           <title>Twitter | Every Interaction</title>
