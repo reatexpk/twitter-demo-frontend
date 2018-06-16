@@ -35,7 +35,11 @@ const Avatar = styled.img`
   margin: 5px 10px 0 11px;
 `;
 
-const Body = styled.div``;
+const Body = styled.div`
+  a {
+    text-decoration: none;
+  }
+`;
 
 const Header = styled.div`
   display: flex;
@@ -63,6 +67,10 @@ const Text = styled.div`
   font-size: 25px;
   letter-spacing: 0.38px;
   color: #292f33;
+  a {
+    color: #1da1f2;
+    text-decoration: none;
+  }
 `;
 
 const TextSmall = styled.div`
@@ -108,6 +116,7 @@ const Preview = styled.div`
   display: flex;
   border: 1px solid #e1e8ed;
   margin-right: 11px;
+  cursor: pointer;
 `;
 const PreviewImage = styled.img`
   margin-right: 9px;
@@ -137,6 +146,14 @@ const PreviewSource = styled.p`
 `;
 
 const Tweet = props => {
+  function createMarkup() {
+    return { __html: props.text };
+  }
+
+  function LinkifyText() {
+    return <div dangerouslySetInnerHTML={createMarkup()} />;
+  }
+
   return (
     <div>
       {props.pinned && (
@@ -154,20 +171,22 @@ const Tweet = props => {
               {props.nickname} • {props.date}
             </Info>
           </Header>
-          {props.type === "common" && <Text>{props.text}</Text>}
+          {props.type === "common" && <Text>{LinkifyText()}</Text>}
           {props.type === "share" && (
             <div>
-              <TextSmall>{props.text}</TextSmall>
-              <Preview>
-                <PreviewImage
-                  src={process.env.PUBLIC_URL + "/img/Tweet3.png"}
-                />
-                <PreviewBody>
-                  <PreviewHeader>{props.previewHeader}</PreviewHeader>
-                  <PreviewText>{props.previewText}</PreviewText>
-                  <PreviewSource>{props.previewSource}</PreviewSource>
-                </PreviewBody>
-              </Preview>
+              <TextSmall>{LinkifyText()}</TextSmall>
+              <a href={"https://" + props.previewSource}>
+                <Preview>
+                  <PreviewImage
+                    src={process.env.PUBLIC_URL + "/img/Tweet3.png"}
+                  />
+                  <PreviewBody>
+                    <PreviewHeader>{props.previewHeader}</PreviewHeader>
+                    <PreviewText>{props.previewText}</PreviewText>
+                    <PreviewSource>{props.previewSource}</PreviewSource>
+                  </PreviewBody>
+                </Preview>
+              </a>
             </div>
           )}
           {props.attachment && (
