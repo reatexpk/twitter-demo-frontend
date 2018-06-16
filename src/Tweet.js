@@ -1,7 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import Tweet1_Image from "./img/Tweet1.png";
-import Tweet3_Image from "./img/Tweet3.png";
+import iconPinned from "./img/Icon_Pinned.svg";
+
+const PinnedTweet = styled.div`
+  display: flex;
+  margin: 8px 0 4px 48px;
+`;
+
+const PinnedIcon = styled.img`
+  width: 12px;
+  height: 12px;
+`;
+
+const PinnedText = styled.p`
+  margin: 0 12px;
+  font-size: 12px;
+  letter-spacing: -0.175385px;
+  color: #707e88;
+`;
 
 const Avatar = styled.img`
   min-width: 50px;
@@ -10,15 +26,24 @@ const Avatar = styled.img`
   margin: 5px 10px 0 11px;
 `;
 
-const TweetConatiner = styled.div`
+const Container = styled.div`
   display: flex;
 `;
 
-const TweetBody = styled.div``;
+const Body = styled.div``;
 
-const TweetHeader = styled.div`
+const Header = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const Info = styled.p`
+  margin: 0 0 0 5px;
+  padding: 0;
+  line-height: 21px;
+  font-size: 14px;
+  letter-spacing: -0.219231px;
+  color: #697787;
 `;
 
 const Poster = styled.h6`
@@ -29,16 +54,7 @@ const Poster = styled.h6`
   color: #292f33;
 `;
 
-const TweetInfo = styled.p`
-  margin: 0 0 0 5px;
-  padding: 0;
-  line-height: 21px;
-  font-size: 14px;
-  letter-spacing: -0.219231px;
-  color: #697787;
-`;
-
-const TweetText = styled.div`
+const Text = styled.div`
   margin-bottom: 17px;
   line-height: 30px;
   font-size: 25px;
@@ -46,12 +62,16 @@ const TweetText = styled.div`
   color: #292f33;
 `;
 
-const TweetTextSmall = styled.div`
+const TextSmall = styled.div`
   margin-bottom: 17px;
   line-height: 22px;
   font-size: 16px;
   letter-spacing: -0.219231px;
   color: #292f33;
+`;
+
+const Attachment = styled.img`
+  max-width: 487px;
 `;
 
 const Tweet1 = styled.img`
@@ -97,73 +117,86 @@ const PreviewBlockSource = styled.p`
   color: #697787;
 `;
 
-class Tweet extends React.Component {
-  render() {
-    if (this.props.id === "1") {
-      return (
-        <TweetConatiner>
+const Tweet = props => {
+  if (props.pinned && props.attachment) {
+    return (
+      <div>
+        <PinnedTweet>
+          <PinnedIcon src={iconPinned} />
+          <PinnedText>Pinned Tweet</PinnedText>
+        </PinnedTweet>
+        <Container>
           <Avatar src={process.env.PUBLIC_URL + "/img/TweetAvatar.png"} />
-          <TweetBody>
-            <TweetHeader>
-              <Poster>Every Interaction</Poster>
-              <TweetInfo>@EveryInteract • {this.props.date}</TweetInfo>
-            </TweetHeader>
-            <TweetText>
-              We’ve made some more resources for all you wonderful{" "}
-              <a href="">#design</a> folk
-              <a href=""> everyinteraction.com/resources/</a>
-              <a href=""> #webdesign</a> <a href="">#UI</a>
-            </TweetText>
-            <Tweet1 src={Tweet1_Image} />
-          </TweetBody>
-        </TweetConatiner>
-      );
-    } else if (this.props.id === "2") {
-      return (
-        <TweetConatiner>
-          <Avatar src={process.env.PUBLIC_URL + "/img/TweetAvatar.png"} />
-          <TweetBody>
-            <TweetHeader>
-              <Poster>Every Interaction</Poster>
-              <TweetInfo>@EveryInteract • {this.props.date}</TweetInfo>
-            </TweetHeader>
-            <TweetText>
-              Our new website concept; Taking you from… @ Every Interaction{" "}
-              <a href="">instagram.com/p/BNFGrfhBP3M/</a>
-            </TweetText>
-          </TweetBody>
-        </TweetConatiner>
-      );
-    } else {
-      return (
-        <TweetConatiner>
-          <Avatar src={process.env.PUBLIC_URL + "/img/TweetAvatar.png"} />
-          <TweetBody>
-            <TweetHeader>
-              <Poster>Every Interaction</Poster>
-              <TweetInfo>@EveryInteract • {this.props.date}</TweetInfo>
-            </TweetHeader>
-            <TweetTextSmall>
-              Variable web fonts are coming, and will open a world of
-              opportunities for weight use online
-            </TweetTextSmall>
-            <PreviewWrapper>
-              <Tweet3 src={Tweet3_Image} />
-              <PreviewBlock>
-                <PreviewBlockHeader>The Future of Web Fonts</PreviewBlockHeader>
-                <PreviewBlockParag>
-                  We love typefaces. They give our sites and applications
-                  personalized feel. They convey the information and tell a
-                  story. They establish information hierarchy. But they’re…
-                </PreviewBlockParag>
-                <PreviewBlockSource>vilijamis.com</PreviewBlockSource>
-              </PreviewBlock>
-            </PreviewWrapper>
-          </TweetBody>
-        </TweetConatiner>
-      );
-    }
+          <Body>
+            <Header>
+              <Poster>{props.name}</Poster>
+              <Info>
+                {props.nickname} • {props.date}
+              </Info>
+            </Header>
+            <Text>{props.text}</Text>
+            <Attachment
+              src={process.env.PUBLIC_URL + "/img/" + props.attachment}
+            />
+          </Body>
+        </Container>
+      </div>
+    );
+  } else if (props.pinned) {
+    return (
+      <div>
+        <PinnedTweet>
+          <PinnedIcon src={iconPinned} />
+          <PinnedText>Pinned Tweet</PinnedText>
+        </PinnedTweet>
+        <Container>
+          <Avatar src={process.env.PUBLIC_URL + "/img/" + props.avatar} />
+          <Body>
+            <Header>
+              <Poster>{props.name}</Poster>
+              <Info>
+                {props.nickname} • {props.date}
+              </Info>
+            </Header>
+            <Text>{props.text}</Text>
+          </Body>
+        </Container>
+      </div>
+    );
+  } else if (props.attachment) {
+    return (
+      <Container>
+        <Avatar src={process.env.PUBLIC_URL + "/img/" + props.avatar} />
+        <Body>
+          <Header>
+            <Poster>{props.name}</Poster>
+            <Info>
+              {props.nickname} • {props.date}
+            </Info>
+          </Header>
+          <Text>{props.text}</Text>
+          <Attachment
+            src={process.env.PUBLIC_URL + "/img/" + props.attachment}
+          />
+        </Body>
+      </Container>
+    );
+  } else {
+    return (
+      <Container>
+        <Avatar src={process.env.PUBLIC_URL + "/img/" + props.avatar} />
+        <Body>
+          <Header>
+            <Poster>{props.name}</Poster>
+            <Info>
+              {props.nickname} • {props.date}
+            </Info>
+          </Header>
+          <Text>{props.text}</Text>
+        </Body>
+      </Container>
+    );
   }
-}
+};
 
 export default Tweet;

@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import iconPinned from "./img/Icon_Pinned.svg";
 import Tweet from "./Tweet";
 
-const StyledTweets = styled.section`
+const StyledFeed = styled.section`
   margin-top: 9px;
   background-color: #ffffff;
 `;
@@ -29,26 +28,9 @@ const TweetsTab = styled.li`
   letter-spacing: -0.263077px;
 `;
 
-const PinnedTweet = styled.div`
-  display: flex;
-  margin: 8px 0 4px 48px;
-`;
-
-const PinnedIcon = styled.img`
-  width: 12px;
-  height: 12px;
-`;
-
-const PinnedText = styled.p`
-  margin: 0 12px;
-  font-size: 12px;
-  letter-spacing: -0.175385px;
-  color: #707e88;
-`;
-
 const Feed = () => {
   return (
-    <StyledTweets>
+    <StyledFeed>
       <TweetsTabs>
         <Link href="#" active>
           <TweetsTab>Tweets</TweetsTab>
@@ -62,17 +44,45 @@ const Feed = () => {
           <TweetsTab>Media</TweetsTab>
         </Link>
       </TweetsTabs>
-      <PinnedTweet>
-        <PinnedIcon src={iconPinned} />
-        <PinnedText>Pinned Tweet</PinnedText>
-      </PinnedTweet>
 
-      <Tweet date="2 Mar 2015" likes="47" retweets="17" comments="0" id="1" />
+      <Tweet
+        avatar="TweetAvatar.png"
+        name="Every Interaction"
+        nickname="@EveryInteract"
+        date="2 Mar 2015"
+        type="common"
+        text="We’ve made some more resources for all you wonderful #design folk everyinteraction.com/resources/ #webdesign #UI"
+        attachment="Tweet1.png"
+        likes="47"
+        retweets="17"
+        comments="0"
+        pinned
+      />
 
-      <Tweet date="23h" likes="2" retweets="3" comments="1" id="2" />
+      <Tweet
+        avatar="TweetAvatar.png"
+        name="Every Interaction"
+        nickname="@EveryInteract"
+        date="23h"
+        type="common"
+        text="Our new website concept; Taking you from… @ Every Interaction instagram.com/p/BNFGrfhBP3M/"
+        likes="2"
+        retweets="3"
+        comments="1"
+      />
 
-      <Tweet date="Nov 18" likes="0" retweets="0" comments="0" id="3" />
-    </StyledTweets>
+      <Tweet
+        avatar="TweetAvatar.png"
+        name="Every Interaction"
+        nickname="@EveryInteract"
+        date="Nov 18"
+        type="share"
+        text="Variable web fonts are coming, and will open a world of opportunities for weight use online"
+        likes="0"
+        retweets="0"
+        comments="0"
+      />
+    </StyledFeed>
   );
 };
 
