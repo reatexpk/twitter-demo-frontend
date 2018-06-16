@@ -3,21 +3,20 @@ import styled from "styled-components";
 import iconMagnifier from "./img/Icon_Magnifier.svg";
 
 const NavRight = styled.div`
-  display: inline-block;
+  display: flex;
 `;
 
 const SearchBar = styled.div`
-  display: inline-block;
-  position: relative;
+  display: flex;
+  background-color: #f5f8fa;
+  border: 1px solid #e6ecf0;
+  border-radius: 100px;
 `;
 
 const SearchInput = styled.input`
-  padding: 6px 30px 6px 11px;
-  width: 220px;
-  background-color: #f5f8fa;
-  border: 1px solid #e6ecf0;
-  box-sizing: border-box;
-  border-radius: 100px;
+  border: none;
+  background-color: transparent;
+  padding: 6px 0px 6px 11px;
 
   ::placeholder {
     line-height: normal;
@@ -26,12 +25,12 @@ const SearchInput = styled.input`
   }
 `;
 
-const SearchButton = styled.span`
-  position: absolute;
-  top: 25%;
-  right: 12px;
+const SearchButton = styled.button`
   width: 15px;
   height: 15px;
+  margin: 9px 12px 8px 4px;
+  padding: 0;
+  border: none;
   background: url(${iconMagnifier}) no-repeat;
   cursor: pointer;
 `;
@@ -45,7 +44,8 @@ const Avatar = styled.div`
 `;
 
 const Button = styled.button`
-  padding: 9px 16px 9px 16px;
+  padding: 8px 16px 8px 16px;
+  box-sizing: border-box;
   background: #1da1f2;
   border-radius: 100px;
   border: none;
