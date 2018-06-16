@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 
 import Header from "./Header";
 import Navigation from "./Navigation";
@@ -45,6 +52,12 @@ export default class App extends Component {
   render() {
     return (
       <StyledApp>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Twitter | Every Interaction</title>
+          <link rel="canonical" href="http://localhost:3000" />
+        </Helmet>
+
         <Header>
           <div className="container">
             <HeaderWrapper>

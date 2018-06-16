@@ -19,8 +19,8 @@ const Link = styled.a`
   color: #707e88;
 `;
 
-const TabText = styled.span`
-  color: ${props => (!props.active ? "#707e88" : "#1da1f2")};
+const Text = styled.span`
+  color: ${props => (props.active ? "#1da1f2" : "#707e88")};
   font-size: ${props => (props.label ? "12px" : "18px")};
   line-height: 21px;
   display: block;
@@ -31,32 +31,32 @@ const Tabs = () => {
     <MenuTabs>
       <Link href="#">
         <Tab active>
-          <TabText label>Tweets</TabText>
-          <TabText active>8,058</TabText>
+          <Text label>Tweets</Text>
+          <Text active>8,058</Text>
         </Tab>
       </Link>
       <Link href="#">
         <Tab>
-          <TabText label>Following</TabText>
-          <TabText>721</TabText>
+          <Text label>Following</Text>
+          <Text>721</Text>
         </Tab>
       </Link>
       <Link href="#">
         <Tab>
-          <TabText label>Followers</TabText>
-          <TabText>1,815</TabText>
+          <Text label>Followers</Text>
+          <Text>1,815</Text>
         </Tab>
       </Link>
       <Link href="#">
         <Tab>
-          <TabText label>Likes</TabText>
-          <TabText>460</TabText>
+          <Text label>Likes</Text>
+          <Text>460</Text>
         </Tab>
       </Link>
       <Link href="#">
         <Tab>
-          <TabText label>Lists</TabText>
-          <TabText>2</TabText>
+          <Text label>Lists</Text>
+          <Text>2</Text>
         </Tab>
       </Link>
     </MenuTabs>
