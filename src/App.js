@@ -14,7 +14,7 @@ import Tabs from "./Tabs";
 import UserActions from "./UserActions";
 
 import ProfileInfo from "./ProfileInfo";
-import Tweets from "./Tweets";
+import Feed from "./Feed";
 import Trends from "./Trends";
 
 const HeaderWrapper = styled.div`
@@ -75,7 +75,7 @@ export default class App extends Component {
                 <ProfileInfo />
               </div>
               <div className="col-lg-6">
-                <Tweets />
+                <Feed />
               </div>
               <div className="col-lg-3">
                 <Trends />

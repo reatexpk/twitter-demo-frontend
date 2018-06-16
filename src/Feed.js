@@ -46,7 +46,7 @@ const PinnedText = styled.p`
   color: #707e88;
 `;
 
-const Tweets = () => {
+const Feed = () => {
   return (
     <StyledTweets>
       <TweetsTabs>
@@ -76,4 +76,4 @@ const Tweets = () => {
   );
 };
 
-export default Tweets;
+export default Feed;
