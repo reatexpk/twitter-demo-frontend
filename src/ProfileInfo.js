@@ -82,13 +82,6 @@ const Icon = styled.img`
   vertical-align: middle;
 `;
 
-const ProfileInfoIcon = props => {
-  if (props.use === "location")
-    return <Icon src={iconLocation} alt="Location" />;
-  else if (props.use === "url") return <Icon src={iconLink} alt="URL" />;
-  else return <Icon src={iconJoined} alt="URL" />;
-};
-
 const Actions = styled.div`
   display: flex;
   justify-content: space-around;
@@ -125,15 +118,15 @@ const ProfileInfo = () => {
           how can we make things *work* amazing.
         </Bio>
         <Location>
-          <ProfileInfoIcon use="location" />
+          <Icon src={iconLocation} alt="Location" />
           <span>London, UK</span>
         </Location>
         <URL>
-          <ProfileInfoIcon use="url" />
+          <Icon src={iconLink} alt="Link" />
           <span>everyinteraction.com</span>
         </URL>
         <JoinDate>
-          <ProfileInfoIcon use="date" />
+          <Icon src={iconJoined} alt="Joined" />
           <span>Joined May 2008</span>
         </JoinDate>
         <Actions>
