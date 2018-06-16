@@ -96,6 +96,7 @@ const Button = styled.button`
   border: none;
   line-height: 14px;
   font-size: 14px;
+  font-weight: bold;
   text-align: center;
   color: #ffffff;
   cursor: pointer;

@@ -1,5 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 import homeIcon from "./img/Icon_Home.svg";
 import momentsIcon from "./img/Icon_Moments.svg";
 import notificationsIcon from "./img/Icon_Notifications.svg";
@@ -14,13 +20,13 @@ const Menu = styled.ul`
 const MenuItem = styled.li`
   margin-right: 25px;
   font-size: 13px;
+  font-weight: bold;
   display: inline-block;
   color: #667580;
-`;
-
-const Link = styled.a`
-  text-decoration: none;
-  color: inherit;
+  a {
+    text-decoration: none;
+    color: #667580;
+  }
 `;
 
 const MenuItemText = styled.p`
@@ -36,34 +42,36 @@ const Icon = styled.img`
 
 const Navigation = props => {
   return (
-    <Nav>
-      <Menu>
-        <MenuItem>
-          <Link href="#">
-            <Icon src={homeIcon} />
-            <MenuItemText>Home</MenuItemText>
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link href="#">
-            <Icon src={momentsIcon} />
-            <MenuItemText>Moments</MenuItemText>
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link href="#">
-            <Icon src={notificationsIcon} />
-            <MenuItemText>Notifications</MenuItemText>
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link href="#">
-            <Icon src={messagesIcon} />
-            <MenuItemText>Messages</MenuItemText>
-          </Link>
-        </MenuItem>
-      </Menu>
-    </Nav>
+    <Router>
+      <Nav>
+        <Menu>
+          <MenuItem>
+            <Link to="/home">
+              <Icon src={homeIcon} />
+              <MenuItemText>Home</MenuItemText>
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/moments">
+              <Icon src={momentsIcon} />
+              <MenuItemText>Moments</MenuItemText>
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/notifications">
+              <Icon src={notificationsIcon} />
+              <MenuItemText>Notifications</MenuItemText>
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/messages">
+              <Icon src={messagesIcon} />
+              <MenuItemText>Messages</MenuItemText>
+            </Link>
+          </MenuItem>
+        </Menu>
+      </Nav>
+    </Router>
   );
 };
 

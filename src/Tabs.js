@@ -21,8 +21,9 @@ const Link = styled.a`
 
 const Text = styled.span`
   color: ${props => (props.active ? "#1da1f2" : "#707e88")};
-  font-size: ${props => (props.label ? "12px" : "18px")};
+  font-size: ${props => (props.quantity ? "18px" : "12px")};
   line-height: 21px;
+  font-weight: bold;
   display: block;
 `;
 
@@ -31,32 +32,34 @@ const Tabs = () => {
     <MenuTabs>
       <Link href="#">
         <Tab active>
-          <Text label>Tweets</Text>
-          <Text active>8,058</Text>
+          <Text>Tweets</Text>
+          <Text quantity active>
+            8,058
+          </Text>
         </Tab>
       </Link>
       <Link href="#">
         <Tab>
-          <Text label>Following</Text>
-          <Text>721</Text>
+          <Text>Following</Text>
+          <Text quantity>721</Text>
         </Tab>
       </Link>
       <Link href="#">
         <Tab>
-          <Text label>Followers</Text>
-          <Text>1,815</Text>
+          <Text>Followers</Text>
+          <Text quantity>1,815</Text>
         </Tab>
       </Link>
       <Link href="#">
         <Tab>
-          <Text label>Likes</Text>
-          <Text>460</Text>
+          <Text>Likes</Text>
+          <Text quantity>460</Text>
         </Tab>
       </Link>
       <Link href="#">
         <Tab>
-          <Text label>Lists</Text>
-          <Text>2</Text>
+          <Text>Lists</Text>
+          <Text quantity>2</Text>
         </Tab>
       </Link>
     </MenuTabs>

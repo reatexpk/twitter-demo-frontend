@@ -11,6 +11,7 @@ const FollowButton = styled.button`
   border: 1px solid #1da1f2;
   border-radius: 100px;
   font-size: 14px;
+  font-weight: bold;
   text-align: center;
   background-color: #fff;
   color: #1da1f2;
