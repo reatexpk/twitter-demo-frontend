@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
 
 import Header from "./Header";
 import Navigation from "./Navigation";
