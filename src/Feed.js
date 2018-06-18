@@ -51,7 +51,7 @@ const Feed = () => {
         date="2 Mar 2015"
         sharedFromAnotherSite={false}
         text="We’ve made some more resources for all you wonderful <a href='/search?q=design'>#design</a> folk <a href='https://everyinteraction.com/resources/'>everyinteraction.com/resources/</a> <a href='search?q=webdesign'>#webdesign</a> <a href='search?q=UI'>#UI</a>"
-        imageSrc="/img/Tweet1.png"
+        imageSrc={process.env.PUBLIC_URL + "/img/Tweet1.png"}
         loves={47}
         retweets={17}
         pinned
@@ -77,7 +77,7 @@ const Feed = () => {
         date="Nov 18"
         sharedFromAnotherSite={true}
         text="Variable web fonts are coming, and will open a world of opportunities for weight use online"
-        previewImageSrc="/img/Tweet3.png"
+        previewImageSrc={process.env.PUBLIC_URL + "/img/Tweet3.png"}
         previewHeader="The Future of Web Fonts"
         previewText="We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…"
         previewSource="vilijamis.com"
