@@ -25,7 +25,6 @@ const TweetsTab = styled.li`
   padding: 15px 15px 10px 15px;
   line-height: normal;
   font-size: 18px;
-  letter-spacing: -0.263077px;
 `;
 
 const Feed = () => {
