@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import homeIcon from "./img/Icon_Home.svg";
 import momentsIcon from "./img/Icon_Moments.svg";
 import notificationsIcon from "./img/Icon_Notifications.svg";
@@ -37,36 +37,34 @@ const Icon = styled.img`
 
 const Navigation = props => {
   return (
-    <Router>
-      <Nav>
-        <Menu>
-          <MenuItem>
-            <Link to="/home">
-              <Icon src={homeIcon} />
-              <MenuItemText>Home</MenuItemText>
-            </Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/moments">
-              <Icon src={momentsIcon} />
-              <MenuItemText>Moments</MenuItemText>
-            </Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/notifications">
-              <Icon src={notificationsIcon} />
-              <MenuItemText>Notifications</MenuItemText>
-            </Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/messages">
-              <Icon src={messagesIcon} />
-              <MenuItemText>Messages</MenuItemText>
-            </Link>
-          </MenuItem>
-        </Menu>
-      </Nav>
-    </Router>
+    <Nav>
+      <Menu>
+        <MenuItem>
+          <Link to="/home">
+            <Icon src={homeIcon} />
+            <MenuItemText>Home</MenuItemText>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/moments">
+            <Icon src={momentsIcon} />
+            <MenuItemText>Moments</MenuItemText>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/notifications">
+            <Icon src={notificationsIcon} />
+            <MenuItemText>Notifications</MenuItemText>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/messages">
+            <Icon src={messagesIcon} />
+            <MenuItemText>Messages</MenuItemText>
+          </Link>
+        </MenuItem>
+      </Menu>
+    </Nav>
   );
 };
 
