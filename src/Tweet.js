@@ -4,7 +4,7 @@ import iconPinned from "./img/Icon_Pinned.svg";
 import commentsIcon from "./img/Icon_Comments.svg";
 import retweetsIcon from "./img/Icon_Retweet.svg";
 import lovesIcon from "./img/Icon_Loves.svg";
-import lovedIcon from "./img/Icon_ Loved.png";
+import lovedIcon from "./img/Icon_Loved.png";
 import envelopeIcon from "./img/Icon_Envelope.svg";
 
 const PinnedTweet = styled.div`

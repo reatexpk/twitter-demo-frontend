@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Header from "./Header";
 import Navigation from "./Navigation";
 import TwitterLogo from "./TwitterLogo";
-import logo from "./img/Icon_ Twitter Logo.svg";
+import logo from "./img/Icon_Twitter Logo.svg";
 import NavigationRight from "./NavigationRight";
 
 import CoverImage from "./CoverImage";
