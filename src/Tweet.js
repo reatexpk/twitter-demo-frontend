@@ -150,7 +150,7 @@ const Tweet = props => {
     return { __html: props.text };
   }
 
-  function LinkifyText() {
+  function LinkifiedText() {
     return <div dangerouslySetInnerHTML={createMarkup()} />;
   }
 
@@ -171,10 +171,10 @@ const Tweet = props => {
               {props.nickname} • {props.date}
             </Info>
           </Header>
-          {props.type === "common" && <Text>{LinkifyText()}</Text>}
+          {props.type === "common" && <Text>{LinkifiedText()}</Text>}
           {props.type === "share" && (
             <div>
-              <TextSmall>{LinkifyText()}</TextSmall>
+              <TextSmall>{LinkifiedText()}</TextSmall>
               <a href={"https://" + props.previewSource}>
                 <Preview>
                   <PreviewImage
