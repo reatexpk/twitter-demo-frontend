@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import homeIcon from "./img/Icon_Home.svg";
 import momentsIcon from "./img/Icon_Moments.svg";
 import notificationsIcon from "./img/Icon_Notifications.svg";
