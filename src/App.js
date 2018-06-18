@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import { BrowserRouter as Router, Redirect } from "react-router-dom";
 
+import Profile from "./Profile";
 import Header from "./Header";
 import Navigation from "./Navigation";
 import TwitterLogo from "./TwitterLogo";
@@ -51,10 +52,9 @@ export default class App extends Component {
           <Redirect from="/" to="/EveryInteraction" />
 
           <Helmet>
-            <meta charSet="utf-8" />
-            <title>Twitter | Every Interaction</title>
-            <link rel="canonical" href="http://localhost:3000" />
+            <title>Twitter</title>
           </Helmet>
+          <Profile />
 
           <Header>
             <div className="container">
