@@ -47,35 +47,35 @@ const Tabs = () => {
   return (
     <MenuTabs>
       <Tab>
-        <StyledNavLink to="/EveryInteraction" exact>
+        <StyledNavLink to="/EveryInteract" exact>
           <Text>Tweets</Text>
           <Quantity>8,058</Quantity>
         </StyledNavLink>
       </Tab>
 
       <Tab>
-        <StyledNavLink to="/EveryInteraction/Following" exact>
+        <StyledNavLink to="/EveryInteract/Following" exact>
           <Text>Following</Text>
           <Quantity>721</Quantity>
         </StyledNavLink>
       </Tab>
 
       <Tab>
-        <StyledNavLink to="/EveryInteraction/Followers" exact>
+        <StyledNavLink to="/EveryInteract/Followers" exact>
           <Text>Followers</Text>
           <Quantity>1,815</Quantity>
         </StyledNavLink>
       </Tab>
 
       <Tab>
-        <StyledNavLink to="/EveryInteraction/Likes" exact>
+        <StyledNavLink to="/EveryInteract/Likes" exact>
           <Text>Likes</Text>
           <Quantity>460</Quantity>
         </StyledNavLink>
       </Tab>
 
       <Tab>
-        <StyledNavLink to="/EveryInteraction/Lists" exact>
+        <StyledNavLink to="/EveryInteract/Lists" exact>
           <Text>Lists</Text>
           <Quantity>2</Quantity>
         </StyledNavLink>

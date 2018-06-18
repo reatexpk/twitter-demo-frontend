@@ -61,11 +61,10 @@ const Poster = styled.h6`
   color: #292f33;
 `;
 
-const Text = styled.div`
-  margin-bottom: 17px;
+const Text = styled.p`
+  margin: 0 0 17px 0;
   line-height: 30px;
   font-size: 25px;
-  letter-spacing: 0.38px;
   color: #292f33;
   a {
     color: #1da1f2;
@@ -73,8 +72,8 @@ const Text = styled.div`
   }
 `;
 
-const TextSmall = styled.div`
-  margin-bottom: 17px;
+const TextSmall = styled.p`
+  margin: 0 0 17px 0;
   line-height: 22px;
   font-size: 16px;
   color: #292f33;
@@ -151,7 +150,10 @@ const Tweet = props => {
   }
 
   function LinkifiedText() {
-    return <div dangerouslySetInnerHTML={createMarkup()} />;
+    return <Text dangerouslySetInnerHTML={createMarkup()} />;
+  }
+  function LinkifiedTextSmall() {
+    return <TextSmall dangerouslySetInnerHTML={createMarkup()} />;
   }
 
   return (
@@ -171,10 +173,10 @@ const Tweet = props => {
               {props.nickname} • {props.date}
             </Info>
           </Header>
-          {!props.sharedFromAnotherSite && <Text>{LinkifiedText()}</Text>}
+          {!props.sharedFromAnotherSite && LinkifiedText()}
           {props.sharedFromAnotherSite && (
             <div>
-              <TextSmall>{LinkifiedText()}</TextSmall>
+              {LinkifiedTextSmall()}
               <a href={"https://" + props.previewSource}>
                 <Preview>
                   <PreviewImage src={props.previewImageSrc} />

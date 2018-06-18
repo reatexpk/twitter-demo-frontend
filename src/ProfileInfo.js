@@ -123,7 +123,7 @@ const ProfileInfo = () => {
           <Icon src={iconLocation} alt="Location" />
           <span>London, UK</span>
         </Location>
-        <Link href="everyinteraction.com">
+        <Link href="https://everyinteraction.com">
           <Icon src={iconLink} alt="Link" />
           <span>everyinteraction.com</span>
         </Link>

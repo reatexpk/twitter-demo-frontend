@@ -49,7 +49,7 @@ export default class App extends Component {
     return (
       <Router>
         <StyledApp>
-          <Redirect from="/" to="/EveryInteraction" />
+          <Redirect from="/" to="/EveryInteract" />
 
           <Helmet>
             <title>Twitter</title>
