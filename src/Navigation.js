@@ -18,10 +18,11 @@ const MenuItem = styled.li`
   font-weight: bold;
   display: inline-block;
   color: #667580;
-  a {
-    text-decoration: none;
-    color: #667580;
-  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #667580;
 `;
 
 const MenuItemText = styled.p`
@@ -40,28 +41,28 @@ const Navigation = props => {
     <Nav>
       <Menu>
         <MenuItem>
-          <Link to="/home">
+          <StyledLink to="/home">
             <Icon src={homeIcon} />
             <MenuItemText>Home</MenuItemText>
-          </Link>
+          </StyledLink>
         </MenuItem>
         <MenuItem>
-          <Link to="/moments">
+          <StyledLink to="/moments">
             <Icon src={momentsIcon} />
             <MenuItemText>Moments</MenuItemText>
-          </Link>
+          </StyledLink>
         </MenuItem>
         <MenuItem>
-          <Link to="/notifications">
+          <StyledLink to="/notifications">
             <Icon src={notificationsIcon} />
             <MenuItemText>Notifications</MenuItemText>
-          </Link>
+          </StyledLink>
         </MenuItem>
         <MenuItem>
-          <Link to="/messages">
+          <StyledLink to="/messages">
             <Icon src={messagesIcon} />
             <MenuItemText>Messages</MenuItemText>
-          </Link>
+          </StyledLink>
         </MenuItem>
       </Menu>
     </Nav>
