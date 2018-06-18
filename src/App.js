@@ -46,57 +46,56 @@ const StyledApp = styled.div`
 export default class App extends Component {
   render() {
     return (
-      <StyledApp>
-        <Router>
-          <Route exact path="/">
-            <Redirect to="/EveryInteraction" />
-          </Route>
-        </Router>
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title>Twitter | Every Interaction</title>
-          <link rel="canonical" href="http://localhost:3000" />
-        </Helmet>
+      <Router>
+        <StyledApp>
+          <Redirect from="/" to="/EveryInteraction" />
 
-        <Header>
-          <div className="container">
-            <HeaderWrapper>
-              <Navigation />
-              <TwitterLogo src={logo} alt="Twitter Logo" />
-              <NavigationRight />
-            </HeaderWrapper>
-          </div>
-        </Header>
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>Twitter | Every Interaction</title>
+            <link rel="canonical" href="http://localhost:3000" />
+          </Helmet>
 
-        <CoverImage />
-
-        <Statistics>
-          <div className="container">
-            <div className="col-lg-offset-3">
-              <StatiscticsWrapper>
-                <Tabs />
-                <UserActions />
-              </StatiscticsWrapper>
+          <Header>
+            <div className="container">
+              <HeaderWrapper>
+                <Navigation />
+                <TwitterLogo src={logo} alt="Twitter Logo" />
+                <NavigationRight />
+              </HeaderWrapper>
             </div>
-          </div>
-        </Statistics>
+          </Header>
 
-        <MainSection>
-          <div className="container">
-            <MainSectionWrapper>
-              <div className="col-lg-3">
-                <ProfileInfo />
+          <CoverImage />
+
+          <Statistics>
+            <div className="container">
+              <div className="col-lg-offset-3">
+                <StatiscticsWrapper>
+                  <Tabs />
+                  <UserActions />
+                </StatiscticsWrapper>
               </div>
-              <div className="col-lg-6">
-                <Feed />
-              </div>
-              <div className="col-lg-3">
-                <Trends />
-              </div>
-            </MainSectionWrapper>
-          </div>
-        </MainSection>
-      </StyledApp>
+            </div>
+          </Statistics>
+
+          <MainSection>
+            <div className="container">
+              <MainSectionWrapper>
+                <div className="col-lg-3">
+                  <ProfileInfo />
+                </div>
+                <div className="col-lg-6">
+                  <Feed />
+                </div>
+                <div className="col-lg-3">
+                  <Trends />
+                </div>
+              </MainSectionWrapper>
+            </div>
+          </MainSection>
+        </StyledApp>
+      </Router>
     );
   }
 }
