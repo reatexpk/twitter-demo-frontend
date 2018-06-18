@@ -49,12 +49,11 @@ const Feed = () => {
         name="Every Interaction"
         nickname="@EveryInteract"
         date="2 Mar 2015"
-        type="common"
+        sharedFromAnotherSite={false}
         text="We’ve made some more resources for all you wonderful <a href='/search?q=design'>#design</a> folk <a href='https://everyinteraction.com/resources/'>everyinteraction.com/resources/</a> <a href='search?q=webdesign'>#webdesign</a> <a href='search?q=UI'>#UI</a>"
-        attachment="Tweet1.png"
-        loves="47"
-        retweets="17"
-        comments=""
+        imageSrc="/img/Tweet1.png"
+        loves={47}
+        retweets={17}
         pinned
         loved
       />
@@ -64,11 +63,11 @@ const Feed = () => {
         name="Every Interaction"
         nickname="@EveryInteract"
         date="23h"
-        type="common"
+        sharedFromAnotherSite={false}
         text="Our new website concept; Taking you from… @ Every Interaction <a href='https://instagram.com/p/BNFGrfhBP3M/'>instagram.com/p/BNFGrfhBP3M/</a>"
-        loves="2"
-        retweets="3"
-        comments="1"
+        loves={2}
+        retweets={3}
+        comments={1}
       />
 
       <Tweet
@@ -76,14 +75,14 @@ const Feed = () => {
         name="Every Interaction"
         nickname="@EveryInteract"
         date="Nov 18"
-        type="share"
+        sharedFromAnotherSite={true}
         text="Variable web fonts are coming, and will open a world of opportunities for weight use online"
+        previewImageSrc="/img/Tweet3.png"
         previewHeader="The Future of Web Fonts"
         previewText="We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…"
         previewSource="vilijamis.com"
-        loves="0"
-        retweets="0"
-        comments=""
+        loves={0}
+        retweets={0}
       />
     </StyledFeed>
   );

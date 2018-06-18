@@ -171,15 +171,13 @@ const Tweet = props => {
               {props.nickname} • {props.date}
             </Info>
           </Header>
-          {props.type === "common" && <Text>{LinkifiedText()}</Text>}
-          {props.type === "share" && (
+          {!props.sharedFromAnotherSite && <Text>{LinkifiedText()}</Text>}
+          {props.sharedFromAnotherSite && (
             <div>
               <TextSmall>{LinkifiedText()}</TextSmall>
               <a href={"https://" + props.previewSource}>
                 <Preview>
-                  <PreviewImage
-                    src={process.env.PUBLIC_URL + "/img/Tweet3.png"}
-                  />
+                  <PreviewImage src={props.previewImageSrc} />
                   <PreviewBody>
                     <PreviewHeader>{props.previewHeader}</PreviewHeader>
                     <PreviewText>{props.previewText}</PreviewText>
@@ -189,11 +187,7 @@ const Tweet = props => {
               </a>
             </div>
           )}
-          {props.attachment && (
-            <Attachment
-              src={process.env.PUBLIC_URL + "/img/" + props.attachment}
-            />
-          )}
+          {props.imageSrc && <Attachment src={props.imageSrc} />}
           <Actions>
             <Comments>
               <Icon src={commentsIcon} alt="Comments" />
