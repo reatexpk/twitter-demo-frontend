@@ -17,7 +17,11 @@ import Tabs from "./Tabs";
 import UserActions from "./UserActions";
 
 import ProfileInfo from "./ProfileInfo";
+import FollowersYouKnow from "./FollowersYouKnow";
+import PhotosAndVideos from "./PhotosAndVideos";
+
 import Feed from "./Feed";
+
 import WhoToFollow from "./WhoToFollow";
 import About from "./About";
 import Trends from "./Trends";
@@ -90,6 +94,8 @@ export default class App extends Component {
               <MainSectionWrapper>
                 <div className="col-lg-3">
                   <ProfileInfo />
+                  <FollowersYouKnow />
+                  <PhotosAndVideos />
                 </div>
                 <div className="col-lg-6">
                   <Feed />
