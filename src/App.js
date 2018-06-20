@@ -18,6 +18,8 @@ import UserActions from "./UserActions";
 
 import ProfileInfo from "./ProfileInfo";
 import Feed from "./Feed";
+import WhoToFollow from "./WhoToFollow";
+import About from "./About";
 import Trends from "./Trends";
 
 const HeaderWrapper = styled.div`
@@ -37,6 +39,10 @@ const MainSection = styled.main`
 
 const MainSectionWrapper = styled.div`
   display: flex;
+`;
+
+const RightColumn = styled.div`
+  margin-top: 9px;
 `;
 
 const StyledApp = styled.div`
@@ -89,7 +95,11 @@ export default class App extends Component {
                   <Feed />
                 </div>
                 <div className="col-lg-3">
-                  <Trends />
+                  <RightColumn>
+                    <WhoToFollow />
+                    <Trends />
+                    <About />
+                  </RightColumn>
                 </div>
               </MainSectionWrapper>
             </div>
