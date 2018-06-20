@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import User from "./User.js";
+import User from "./User";
 import FindPeopleYouKnow from "./FindPeopleYouKnow";
 
 const Wrapper = styled.div`
