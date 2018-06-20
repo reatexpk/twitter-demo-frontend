@@ -14,6 +14,7 @@ const Header = styled.div`
 
 const Title = styled.h3`
   margin: 14px 0 15px 13px;
+  color: #292f33;
 `;
 
 const StyledLink = styled.a`
@@ -50,6 +51,7 @@ const WhoToFollow = () => {
         src={process.env.PUBLIC_URL + "/img/Creode.png"}
         name="Creode"
         nickname="@Creode"
+        verificated
       />
       <User
         src={process.env.PUBLIC_URL + "/img/EpiphanySearch.png"}

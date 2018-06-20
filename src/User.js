@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import iconDelete from "./img/Icon_Delete.png";
+import tick from "./img/Tick.png";
 
 const Container = styled.div`
   display: flex;
@@ -36,6 +37,13 @@ const Nickname = styled.p`
   color: #697787;
 `;
 
+const VerificationTick = styled.img`
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  vertical-align: sub;
+`;
+
 const DeleteButton = styled.button`
   background: transparent url(${iconDelete}) no-repeat;
   position: absolute;
@@ -67,6 +75,7 @@ const User = props => {
       <Avatar src={props.src} alt={props.name} />
       <Content>
         <Name>{props.name}</Name>
+        {props.verificated && <VerificationTick src={tick} />}
         <Nickname>{props.nickname}</Nickname>
         <DeleteButton />
         <Button>Follow</Button>
