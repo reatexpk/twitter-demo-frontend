@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledTrend = styled.div`
   margin: 0 16px;
   padding: 5px 0;
 `;
 
-const Link = styled.a`
+const StyledLink = styled(Link)`
   text-decoration: none;
   line-height: 20px;
   font-size: 15px;
@@ -27,7 +28,7 @@ const Text = styled.p`
 const Trend = props => {
   return (
     <StyledTrend>
-      <Link href="">{props.title}</Link>
+      <StyledLink to={`/search?q=${props.title}`}>{props.title}</StyledLink>
       {props.text && <Text>{props.text}</Text>}
       {props.count && <Text>{props.count} Tweets</Text>}
     </StyledTrend>
