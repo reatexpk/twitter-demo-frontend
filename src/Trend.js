@@ -29,6 +29,7 @@ const Trend = props => {
     <StyledTrend>
       <Link href="">{props.title}</Link>
       {props.text && <Text>{props.text}</Text>}
+      {props.count && <Text>{props.count} Tweets</Text>}
     </StyledTrend>
   );
 };
