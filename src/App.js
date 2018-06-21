@@ -7,7 +7,7 @@ import Profile from "./Profile";
 import Header from "./Header";
 import Navigation from "./Navigation";
 import TwitterLogo from "./TwitterLogo";
-import logo from "./img/Icon_Twitter Logo.svg";
+import logo from "./img/icon-twitter-logo.svg";
 import NavigationRight from "./NavigationRight";
 
 import CoverImage from "./CoverImage";

@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import homeIcon from "./img/Icon_Home.svg";
-import momentsIcon from "./img/Icon_Moments.svg";
-import notificationsIcon from "./img/Icon_Notifications.svg";
-import messagesIcon from "./img/Icon_Messages.svg";
+import homeIcon from "./img/icon-home.svg";
+import momentsIcon from "./img/icon-moments.svg";
+import notificationsIcon from "./img/icon-notifications.svg";
+import messagesIcon from "./img/icon-messages.svg";
 
 const Nav = styled.nav``;
 

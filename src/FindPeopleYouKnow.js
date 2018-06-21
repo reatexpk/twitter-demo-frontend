@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import iconPeople from "./img/Icon_People.png";
+import iconPeople from "./img/icon-people.png";
 
 const StyledFindPeopleYouKnow = styled.a`
   display: flex;

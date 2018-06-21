@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import tick from "./img/Tick.png";
-import iconLocation from "./img/Icon_Location.svg";
-import iconLink from "./img/Icon_Link.svg";
-import iconJoined from "./img/Icon_Joined.svg";
+import tick from "./img/icon-tick.png";
+import iconLocation from "./img/icon-location.svg";
+import iconLink from "./img/icon-link.svg";
+import iconJoined from "./img/icon-joined.svg";
 
 const StyledProfileInfo = styled.section`
   position: relative;

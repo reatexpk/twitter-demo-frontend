@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import iconDelete from "./img/Icon_Delete.png";
-import tick from "./img/Tick.png";
+import iconDelete from "./img/icon-delete.png";
+import tick from "./img/icon-tick.png";
 
 const Container = styled.div`
   display: flex;

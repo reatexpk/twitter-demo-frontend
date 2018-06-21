@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import iconFollowers from "./img/Icon_Followers.png";
+import iconFollowers from "./img/icon-followers.png";
 
 import Followers from "./Followers";
 

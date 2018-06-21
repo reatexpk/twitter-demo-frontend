@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import iconVideos from "./img/Icon_Videos.png";
+import iconVideos from "./img/icon-videos.png";
 
 import PhotosAndVideosInner from "./PhotosAndVideosInner";
 
