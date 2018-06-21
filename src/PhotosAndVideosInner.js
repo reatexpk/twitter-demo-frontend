@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledPAV = styled.div`
+const StyledPhotosAndVideosInner = styled.div`
   margin-left: 2px;
   margin-top: 8px;
 `;
@@ -16,7 +16,7 @@ const Image = styled.img`
 
 const PhotosAndVideosInner = props => {
   return (
-    <StyledPAV>
+    <StyledPhotosAndVideosInner>
       <Link href="">
         <Image src={props.imageSrc[0]} />
       </Link>
@@ -35,7 +35,7 @@ const PhotosAndVideosInner = props => {
       <Link href="">
         <Image src={props.imageSrc[5]} />
       </Link>
-    </StyledPAV>
+    </StyledPhotosAndVideosInner>
   );
 };
 
