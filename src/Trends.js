@@ -48,14 +48,14 @@ const Trends = () => {
         <StyledLink href="">Change</StyledLink>
       </Header>
       <Trend title="#BringYourDogToWorkDay" />
-      <Trend title="#FridayFeeling" count="12.1K" />
+      <Trend title="#FridayFeeling" count={12100} />
       <Trend
         title="#BrexitAnniversary"
         text="It’s one year since the UK voted to leave the European Union"
       />
-      <Trend title="HMS Queen Elizabeth" count="1,036" />
-      <Trend title="Joe Budden" count="1,036" />
-      <Trend title="Trident" count="6,136" />
+      <Trend title="HMS Queen Elizabeth" count={1036} />
+      <Trend title="Joe Budden" count={1036} />
+      <Trend title="Trident" count={6136} />
     </StyledTrends>
   );
 };
