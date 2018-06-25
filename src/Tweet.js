@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import iconPinned from "./img/Icon_Pinned.svg";
-import commentsIcon from "./img/Icon_Comments.svg";
-import retweetsIcon from "./img/Icon_Retweet.svg";
-import lovesIcon from "./img/Icon_Loves.svg";
-import lovedIcon from "./img/Icon_Loved.png";
-import envelopeIcon from "./img/Icon_Envelope.svg";
+import iconPinned from "./img/icon-pinned.svg";
+import commentsIcon from "./img/icon-comments.svg";
+import retweetsIcon from "./img/icon-retweet.svg";
+import lovesIcon from "./img/icon-loves.svg";
+import lovedIcon from "./img/icon-loved.png";
+import envelopeIcon from "./img/icon-envelope.svg";
 
 const PinnedTweet = styled.div`
   display: flex;

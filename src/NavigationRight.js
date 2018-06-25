@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import iconMagnifier from "./img/Icon_Magnifier.svg";
+import iconMagnifier from "./img/icon-magnifier.svg";
 
 const NavRight = styled.div`
   display: flex;

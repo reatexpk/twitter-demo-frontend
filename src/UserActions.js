@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import iconMore from "./img/Icon_More.png";
+import iconMore from "./img/icon-more.png";
 
 const StyledUserActions = styled.div`
   align-self: center;

@@ -7,7 +7,7 @@ import Profile from "./Profile";
 import Header from "./Header";
 import Navigation from "./Navigation";
 import TwitterLogo from "./TwitterLogo";
-import logo from "./img/Icon_Twitter Logo.svg";
+import logo from "./img/icon-twitter-logo.svg";
 import NavigationRight from "./NavigationRight";
 
 import CoverImage from "./CoverImage";
@@ -17,7 +17,13 @@ import Tabs from "./Tabs";
 import UserActions from "./UserActions";
 
 import ProfileInfo from "./ProfileInfo";
+import FollowersYouKnow from "./FollowersYouKnow";
+import PhotosAndVideos from "./PhotosAndVideos";
+
 import Feed from "./Feed";
+
+import WhoToFollow from "./WhoToFollow";
+import About from "./About";
 import Trends from "./Trends";
 
 const HeaderWrapper = styled.div`
@@ -37,6 +43,10 @@ const MainSection = styled.main`
 
 const MainSectionWrapper = styled.div`
   display: flex;
+`;
+
+const RightColumn = styled.div`
+  margin-top: 9px;
 `;
 
 const StyledApp = styled.div`
@@ -84,12 +94,18 @@ export default class App extends Component {
               <MainSectionWrapper>
                 <div className="col-lg-3">
                   <ProfileInfo />
+                  <FollowersYouKnow />
+                  <PhotosAndVideos />
                 </div>
                 <div className="col-lg-6">
                   <Feed />
                 </div>
                 <div className="col-lg-3">
-                  <Trends />
+                  <RightColumn>
+                    <WhoToFollow />
+                    <Trends />
+                    <About />
+                  </RightColumn>
                 </div>
               </MainSectionWrapper>
             </div>
