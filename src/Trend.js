@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledTrend = styled.div`
   margin: 0 16px;
@@ -25,14 +25,24 @@ const Text = styled.p`
   font-size: 15px;
 `;
 
-const Trend = props => {
-  return (
-    <StyledTrend>
-      <StyledLink to={`/search?q=${props.title}`}>{props.title}</StyledLink>
-      {props.text && <Text>{props.text}</Text>}
-      {props.count && <Text>{props.count} Tweets</Text>}
-    </StyledTrend>
-  );
-};
+const Trend = ({ title, text, count }) => (
+  <StyledTrend>
+    <StyledLink to={`/search?q=${title}`}>
+      {title}
+    </StyledLink>
+    {text && (
+    <Text>
+      {text}
+    </Text>
+    )}
+    {count && (
+    <Text>
+      {count}
+      {' '}
+Tweets
+    </Text>
+    )}
+  </StyledTrend>
+);
 
 export default Trend;

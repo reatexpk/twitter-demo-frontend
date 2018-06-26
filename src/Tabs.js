@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const MenuTabs = styled.ul`
   margin: 0px;
@@ -43,45 +43,63 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-const Tabs = () => {
-  return (
-    <MenuTabs>
-      <Tab>
-        <StyledNavLink to="/EveryInteract" exact>
-          <Text>Tweets</Text>
-          <Quantity>8,058</Quantity>
-        </StyledNavLink>
-      </Tab>
+const Tabs = () => (
+  <MenuTabs>
+    <Tab>
+      <StyledNavLink to="/EveryInteract" exact>
+        <Text>
+Tweets
+        </Text>
+        <Quantity>
+8,058
+        </Quantity>
+      </StyledNavLink>
+    </Tab>
 
-      <Tab>
-        <StyledNavLink to="/EveryInteract/Following" exact>
-          <Text>Following</Text>
-          <Quantity>721</Quantity>
-        </StyledNavLink>
-      </Tab>
+    <Tab>
+      <StyledNavLink to="/EveryInteract/Following" exact>
+        <Text>
+Following
+        </Text>
+        <Quantity>
+721
+        </Quantity>
+      </StyledNavLink>
+    </Tab>
 
-      <Tab>
-        <StyledNavLink to="/EveryInteract/Followers" exact>
-          <Text>Followers</Text>
-          <Quantity>1,815</Quantity>
-        </StyledNavLink>
-      </Tab>
+    <Tab>
+      <StyledNavLink to="/EveryInteract/Followers" exact>
+        <Text>
+Followers
+        </Text>
+        <Quantity>
+1,815
+        </Quantity>
+      </StyledNavLink>
+    </Tab>
 
-      <Tab>
-        <StyledNavLink to="/EveryInteract/Likes" exact>
-          <Text>Likes</Text>
-          <Quantity>460</Quantity>
-        </StyledNavLink>
-      </Tab>
+    <Tab>
+      <StyledNavLink to="/EveryInteract/Likes" exact>
+        <Text>
+Likes
+        </Text>
+        <Quantity>
+460
+        </Quantity>
+      </StyledNavLink>
+    </Tab>
 
-      <Tab>
-        <StyledNavLink to="/EveryInteract/Lists" exact>
-          <Text>Lists</Text>
-          <Quantity>2</Quantity>
-        </StyledNavLink>
-      </Tab>
-    </MenuTabs>
-  );
-};
+    <Tab>
+      <StyledNavLink to="/EveryInteract/Lists" exact>
+        <Text>
+Lists
+        </Text>
+        <Quantity>
+2
+        </Quantity>
+      </StyledNavLink>
+    </Tab>
+  </MenuTabs>
+);
 
 export default Tabs;

@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import Tweet from "./Tweet";
+import React from 'react';
+import styled from 'styled-components';
+import Tweet from './Tweet';
 
 const StyledFeed = styled.section`
   margin-top: 9px;
@@ -17,7 +17,7 @@ const Link = styled.a`
   display: inline-block;
   outline: none;
   text-decoration: none;
-  color: ${props => (props.active ? "#000000" : "#1da1f2")};
+  color: ${({ active }) => (active ? '#000000' : '#1da1f2')};
 `;
 
 const TweetsTab = styled.li`
@@ -27,65 +27,69 @@ const TweetsTab = styled.li`
   font-size: 18px;
 `;
 
-const Feed = () => {
-  return (
-    <StyledFeed>
-      <TweetsTabs>
-        <Link href="#" active>
-          <TweetsTab>Tweets</TweetsTab>
-        </Link>
+const Feed = () => (
+  <StyledFeed>
+    <TweetsTabs>
+      <Link href="/" active>
+        <TweetsTab>
+Tweets
+        </TweetsTab>
+      </Link>
 
-        <Link href="#">
-          <TweetsTab>Tweets & Replies</TweetsTab>
-        </Link>
+      <Link href="/">
+        <TweetsTab>
+Tweets & Replies
+        </TweetsTab>
+      </Link>
 
-        <Link href="#">
-          <TweetsTab>Media</TweetsTab>
-        </Link>
-      </TweetsTabs>
+      <Link href="/">
+        <TweetsTab>
+Media
+        </TweetsTab>
+      </Link>
+    </TweetsTabs>
 
-      <Tweet
-        avatar="TweetAvatar.png"
-        name="Every Interaction"
-        nickname="@EveryInteract"
-        date="2 Mar 2015"
-        sharedFromAnotherSite={false}
-        text="We’ve made some more resources for all you wonderful <a href='/search?q=design'>#design</a> folk <a href='https://everyinteraction.com/resources/'>everyinteraction.com/resources/</a> <a href='search?q=webdesign'>#webdesign</a> <a href='search?q=UI'>#UI</a>"
-        imageSrc={process.env.PUBLIC_URL + "/img/Tweet1.png"}
-        loves={47}
-        retweets={17}
-        pinned
-        loved
-      />
+    <Tweet
+      avatar="TweetAvatar.png"
+      name="Every Interaction"
+      nickname="@EveryInteract"
+      date="2 Mar 2015"
+      sharedFromAnotherSite={false}
+      text="We’ve made some more resources for all you wonderful <a href='/search?q=design'>#design</a> folk <a href='https://everyinteraction.com/resources/'>everyinteraction.com/resources/</a> <a href='search?q=webdesign'>#webdesign</a> <a href='search?q=UI'>#UI</a>"
+      imageSrc={`${process.env.PUBLIC_URL}/img/Tweet1.png`}
+      loves={47}
+      retweets={17}
+      pinned
+      loved
+    />
 
-      <Tweet
-        avatar="TweetAvatar.png"
-        name="Every Interaction"
-        nickname="@EveryInteract"
-        date="23h"
-        sharedFromAnotherSite={false}
-        text="Our new website concept; Taking you from… @ Every Interaction <a href='https://instagram.com/p/BNFGrfhBP3M/'>instagram.com/p/BNFGrfhBP3M/</a>"
-        loves={2}
-        retweets={3}
-        comments={1}
-      />
+    <Tweet
+      avatar="TweetAvatar.png"
+      name="Every Interaction"
+      nickname="@EveryInteract"
+      date="23h"
+      sharedFromAnotherSite={false}
+      text="Our new website concept; Taking you from… @ Every Interaction <a href='https://instagram.com/p/BNFGrfhBP3M/'>instagram.com/p/BNFGrfhBP3M/</a>"
+      loves={2}
+      retweets={3}
+      comments={1}
+    />
 
-      <Tweet
-        avatar="TweetAvatar.png"
-        name="Every Interaction"
-        nickname="@EveryInteract"
-        date="Nov 18"
-        sharedFromAnotherSite={true}
-        text="Variable web fonts are coming, and will open a world of opportunities for weight use online"
-        previewImageSrc={process.env.PUBLIC_URL + "/img/Tweet3.png"}
-        previewHeader="The Future of Web Fonts"
-        previewText="We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…"
-        previewSource="vilijamis.com"
-        loves={0}
-        retweets={0}
-      />
-    </StyledFeed>
-  );
-};
+    <Tweet
+      avatar="TweetAvatar.png"
+      name="Every Interaction"
+      nickname="@EveryInteract"
+      date="Nov 18"
+      sharedFromAnotherSite
+      text="Variable web fonts are coming, and will open a world of opportunities for weight use online"
+      previewImageSrc={`${process.env.PUBLIC_URL}/img/Tweet3.png`}
+      previewHeader="The Future of Web Fonts"
+      previewText="We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…"
+      previewSource="vilijamis.com"
+      loves={0}
+      retweets={0}
+    />
+  </StyledFeed>
+);
 
 export default Feed;

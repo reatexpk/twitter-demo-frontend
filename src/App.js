@@ -1,30 +1,30 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Helmet } from "react-helmet";
-import { BrowserRouter as Router, Redirect } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
+import { BrowserRouter as Router, Redirect } from 'react-router-dom';
 
-import Profile from "./Profile";
-import Header from "./Header";
-import Navigation from "./Navigation";
-import TwitterLogo from "./TwitterLogo";
-import logo from "./img/icon-twitter-logo.svg";
-import NavigationRight from "./NavigationRight";
+import Profile from './Profile';
+import Header from './Header';
+import Navigation from './Navigation';
+import TwitterLogo from './TwitterLogo';
+import logo from './img/icon-twitter-logo.svg';
+import NavigationRight from './NavigationRight';
 
-import CoverImage from "./CoverImage";
+import CoverImage from './CoverImage';
 
-import Statistics from "./Statistics";
-import Tabs from "./Tabs";
-import UserActions from "./UserActions";
+import Statistics from './Statistics';
+import Tabs from './Tabs';
+import UserActions from './UserActions';
 
-import ProfileInfo from "./ProfileInfo";
-import FollowersYouKnow from "./FollowersYouKnow";
-import PhotosAndVideos from "./PhotosAndVideos";
+import ProfileInfo from './ProfileInfo';
+import FollowersYouKnow from './FollowersYouKnow';
+import PhotosAndVideos from './PhotosAndVideos';
 
-import Feed from "./Feed";
+import Feed from './Feed';
 
-import WhoToFollow from "./WhoToFollow";
-import About from "./About";
-import Trends from "./Trends";
+import WhoToFollow from './WhoToFollow';
+import About from './About';
+import Trends from './Trends';
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -54,64 +54,64 @@ const StyledApp = styled.div`
   font-family: Helvetica;
 `;
 
-export default class App extends Component {
-  render() {
-    return (
-      <Router>
-        <StyledApp>
-          <Redirect from="/" to="/EveryInteract" />
+const App = () => (
+  <Router>
+    <StyledApp>
+      <Redirect from="/" to="/EveryInteract" />
 
-          <Helmet>
-            <title>Twitter</title>
-          </Helmet>
-          <Profile />
+      <Helmet>
+        <title>
+Twitter
+        </title>
+      </Helmet>
+      <Profile />
 
-          <Header>
-            <div className="container">
-              <HeaderWrapper>
-                <Navigation />
-                <TwitterLogo src={logo} alt="Twitter Logo" />
-                <NavigationRight />
-              </HeaderWrapper>
+      <Header>
+        <div className="container">
+          <HeaderWrapper>
+            <Navigation />
+            <TwitterLogo src={logo} alt="Twitter Logo" />
+            <NavigationRight />
+          </HeaderWrapper>
+        </div>
+      </Header>
+
+      <CoverImage />
+
+      <Statistics>
+        <div className="container">
+          <div className="col-lg-offset-3">
+            <StatiscticsWrapper>
+              <Tabs />
+              <UserActions />
+            </StatiscticsWrapper>
+          </div>
+        </div>
+      </Statistics>
+
+      <MainSection>
+        <div className="container">
+          <MainSectionWrapper>
+            <div className="col-lg-3">
+              <ProfileInfo />
+              <FollowersYouKnow />
+              <PhotosAndVideos />
             </div>
-          </Header>
-
-          <CoverImage />
-
-          <Statistics>
-            <div className="container">
-              <div className="col-lg-offset-3">
-                <StatiscticsWrapper>
-                  <Tabs />
-                  <UserActions />
-                </StatiscticsWrapper>
-              </div>
+            <div className="col-lg-6">
+              <Feed />
             </div>
-          </Statistics>
-
-          <MainSection>
-            <div className="container">
-              <MainSectionWrapper>
-                <div className="col-lg-3">
-                  <ProfileInfo />
-                  <FollowersYouKnow />
-                  <PhotosAndVideos />
-                </div>
-                <div className="col-lg-6">
-                  <Feed />
-                </div>
-                <div className="col-lg-3">
-                  <RightColumn>
-                    <WhoToFollow />
-                    <Trends />
-                    <About />
-                  </RightColumn>
-                </div>
-              </MainSectionWrapper>
+            <div className="col-lg-3">
+              <RightColumn>
+                <WhoToFollow />
+                <Trends />
+                <About />
+              </RightColumn>
             </div>
-          </MainSection>
-        </StyledApp>
-      </Router>
-    );
-  }
-}
+          </MainSectionWrapper>
+        </div>
+      </MainSection>
+    </StyledApp>
+  </Router>
+);
+
+export default App;
