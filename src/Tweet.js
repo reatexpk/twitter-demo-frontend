@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import iconPinned from "./img/icon-pinned.svg";
-import commentsIcon from "./img/icon-comments.svg";
-import retweetsIcon from "./img/icon-retweet.svg";
-import lovesIcon from "./img/icon-loves.svg";
-import lovedIcon from "./img/icon-loved.png";
-import envelopeIcon from "./img/icon-envelope.svg";
+import React from 'react';
+import styled from 'styled-components';
+import iconPinned from './img/icon-pinned.svg';
+import commentsIcon from './img/icon-comments.svg';
+import retweetsIcon from './img/icon-retweet.svg';
+import lovesIcon from './img/icon-loves.svg';
+import lovedIcon from './img/icon-loved.png';
+import envelopeIcon from './img/icon-envelope.svg';
 
 const PinnedTweet = styled.div`
   display: flex;
@@ -104,10 +104,10 @@ const Comments = styled.div`
   cursor: pointer;
 `;
 const Retweets = Comments.extend`
-  color: ${props => (props.loved ? "#E2264D" : "#667580")};
+  color: ${({ loved }) => (loved ? '#E2264D' : '#667580')};
 `;
 const Loves = Comments.extend`
-  color: ${props => (props.loved ? "#E2264D" : "#667580")};
+  color: ${({ loved }) => (loved ? '#E2264D' : '#667580')};
 `;
 const Envelop = Comments;
 
@@ -144,9 +144,26 @@ const PreviewSource = styled.p`
   color: #697787;
 `;
 
-const Tweet = props => {
+const Tweet = ({
+  text,
+  pinned,
+  name,
+  nickname,
+  date,
+  sharedFromAnotherSite,
+  previewSource,
+  previewImageSrc,
+  previewHeader,
+  previewText,
+  imageSrc,
+  comments,
+  retweeted,
+  retweets,
+  loved,
+  loves,
+}) => {
   function createMarkup() {
-    return { __html: props.text };
+    return { __html: text };
   }
 
   function LinkifiedText() {
@@ -158,54 +175,67 @@ const Tweet = props => {
 
   return (
     <div>
-      {props.pinned && (
+      {pinned && (
         <PinnedTweet>
           <PinnedIcon src={iconPinned} />
-          <PinnedText>Pinned Tweet</PinnedText>
+          <PinnedText>
+Pinned Tweet
+          </PinnedText>
         </PinnedTweet>
       )}
       <Container>
-        <Avatar src={process.env.PUBLIC_URL + "/img/TweetAvatar.png"} />
+        <Avatar src={`${process.env.PUBLIC_URL}/img/TweetAvatar.png`} />
         <Body>
           <Header>
-            <Poster>{props.name}</Poster>
+            <Poster>
+              {name}
+            </Poster>
             <Info>
-              {props.nickname} • {props.date}
+              {nickname}
+              {' '}
+•
+              {date}
             </Info>
           </Header>
-          {!props.sharedFromAnotherSite && LinkifiedText()}
-          {props.sharedFromAnotherSite && (
+          {!sharedFromAnotherSite && LinkifiedText()}
+          {sharedFromAnotherSite && (
             <div>
               {LinkifiedTextSmall()}
-              <a href={"https://" + props.previewSource}>
+              <a href={`https://${previewSource}`}>
                 <Preview>
-                  <PreviewImage src={props.previewImageSrc} />
+                  <PreviewImage src={previewImageSrc} />
                   <PreviewBody>
-                    <PreviewHeader>{props.previewHeader}</PreviewHeader>
-                    <PreviewText>{props.previewText}</PreviewText>
-                    <PreviewSource>{props.previewSource}</PreviewSource>
+                    <PreviewHeader>
+                      {previewHeader}
+                    </PreviewHeader>
+                    <PreviewText>
+                      {previewText}
+                    </PreviewText>
+                    <PreviewSource>
+                      {previewSource}
+                    </PreviewSource>
                   </PreviewBody>
                 </Preview>
               </a>
             </div>
           )}
-          {props.imageSrc && <Attachment src={props.imageSrc} />}
+          {imageSrc && <Attachment src={imageSrc} />}
           <Actions>
             <Comments>
               <Icon src={commentsIcon} alt="Comments" />
-              {props.comments}
+              {comments}
             </Comments>
 
             <Retweets retweeted>
-              {props.retweeted && <Icon src={retweetsIcon} alt="Retweets" />}
-              {props.retweeted || <Icon src={retweetsIcon} alt="Retweeted" />}
-              {props.retweets}
+              {retweeted && <Icon src={retweetsIcon} alt="Retweets" />}
+              {retweeted || <Icon src={retweetsIcon} alt="Retweeted" />}
+              {retweets}
             </Retweets>
 
-            <Loves loved={props.loved}>
-              {props.loved && <Icon src={lovedIcon} alt="Loved" />}
-              {props.loved || <Icon src={lovesIcon} alt="Loves" />}
-              {props.loves}
+            <Loves loved={loved}>
+              {loved && <Icon src={lovedIcon} alt="Loved" />}
+              {loved || <Icon src={lovesIcon} alt="Loves" />}
+              {loves}
             </Loves>
 
             <Envelop>

@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import iconDelete from "./img/icon-delete.png";
-import tick from "./img/icon-tick.png";
+import React from 'react';
+import styled from 'styled-components';
+import iconDelete from './img/icon-delete.png';
+import tick from './img/icon-tick.png';
 
 const Container = styled.div`
   display: flex;
@@ -69,19 +69,25 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const User = props => {
-  return (
-    <Container>
-      <Avatar src={props.src} alt={props.name} />
-      <Content>
-        <Name>{props.name}</Name>
-        {props.verificated && <VerificationTick src={tick} />}
-        <Nickname>{props.nickname}</Nickname>
-        <DeleteButton />
-        <Button>Follow</Button>
-      </Content>
-    </Container>
-  );
-};
+const User = ({
+  src, name, verificated, nickname,
+}) => (
+  <Container>
+    <Avatar src={src} alt={name} />
+    <Content>
+      <Name>
+        {name}
+      </Name>
+      {verificated && <VerificationTick src={tick} />}
+      <Nickname>
+        {nickname}
+      </Nickname>
+      <DeleteButton />
+      <Button>
+Follow
+      </Button>
+    </Content>
+  </Container>
+);
 
 export default User;

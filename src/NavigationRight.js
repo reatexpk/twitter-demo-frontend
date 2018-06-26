@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import iconMagnifier from "./img/icon-magnifier.svg";
+import React from 'react';
+import styled from 'styled-components';
+import iconMagnifier from './img/icon-magnifier.svg';
 
 const NavRight = styled.div`
   display: flex;
@@ -58,19 +58,19 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const NavigationRight = () => {
-  return (
-    <NavRight>
-      <SearchBar>
-        <SearchInput placeholder="Search Twitter" />
-        <SearchButton />
-      </SearchBar>
-      <Avatar>
-        <img src={process.env.PUBLIC_URL + "/img/avatar.png"} alt="avatar" />
-      </Avatar>
-      <Button>Tweet</Button>
-    </NavRight>
-  );
-};
+const NavigationRight = () => (
+  <NavRight>
+    <SearchBar>
+      <SearchInput placeholder="Search Twitter" />
+      <SearchButton />
+    </SearchBar>
+    <Avatar>
+      <img src={`${process.env.PUBLIC_URL}/img/avatar.png`} alt="avatar" />
+    </Avatar>
+    <Button>
+Tweet
+    </Button>
+  </NavRight>
+);
 
 export default NavigationRight;

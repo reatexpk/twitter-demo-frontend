@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import iconMore from "./img/icon-more.png";
+import React from 'react';
+import styled from 'styled-components';
+import iconMore from './img/icon-more.png';
 
 const StyledUserActions = styled.div`
   align-self: center;
@@ -27,13 +27,13 @@ const IconMore = styled.button`
   cursor: pointer;
 `;
 
-const UserActions = () => {
-  return (
-    <StyledUserActions>
-      <FollowButton>Follow</FollowButton>
-      <IconMore />
-    </StyledUserActions>
-  );
-};
+const UserActions = () => (
+  <StyledUserActions>
+    <FollowButton>
+Follow
+    </FollowButton>
+    <IconMore />
+  </StyledUserActions>
+);
 
 export default UserActions;

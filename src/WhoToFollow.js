@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import User from "./User";
-import FindPeopleYouKnow from "./FindPeopleYouKnow";
+import User from './User';
+import FindPeopleYouKnow from './FindPeopleYouKnow';
 
 const Wrapper = styled.div`
   background: #fff;
@@ -32,35 +32,43 @@ const Dot = styled.span`
   color: #66757f;
 `;
 
-const WhoToFollow = () => {
-  return (
-    <Wrapper>
-      <Header>
-        <Title>Who to follow</Title>
-        <Dot>·</Dot>
-        <StyledLink href="">Refresh</StyledLink>
-        <Dot>·</Dot>
-        <StyledLink href="">View all</StyledLink>
-      </Header>
-      <User
-        src={process.env.PUBLIC_URL + "/img/AppleInsider.png"}
-        name="AppleInsider"
-        nickname="@appleinsider"
-      />
-      <User
-        src={process.env.PUBLIC_URL + "/img/Creode.png"}
-        name="Creode"
-        nickname="@Creode"
-        verificated
-      />
-      <User
-        src={process.env.PUBLIC_URL + "/img/EpiphanySearch.png"}
-        name="EpiphanySearch"
-        nickname="@EpiphanySearch"
-      />
-      <FindPeopleYouKnow />
-    </Wrapper>
-  );
-};
+const WhoToFollow = () => (
+  <Wrapper>
+    <Header>
+      <Title>
+Who to follow
+      </Title>
+      <Dot>
+·
+      </Dot>
+      <StyledLink href="">
+Refresh
+      </StyledLink>
+      <Dot>
+·
+      </Dot>
+      <StyledLink href="">
+View all
+      </StyledLink>
+    </Header>
+    <User
+      src={`${process.env.PUBLIC_URL}/img/AppleInsider.png`}
+      name="AppleInsider"
+      nickname="@appleinsider"
+    />
+    <User
+      src={`${process.env.PUBLIC_URL}/img/Creode.png`}
+      name="Creode"
+      nickname="@Creode"
+      verificated
+    />
+    <User
+      src={`${process.env.PUBLIC_URL}/img/EpiphanySearch.png`}
+      name="EpiphanySearch"
+      nickname="@EpiphanySearch"
+    />
+    <FindPeopleYouKnow />
+  </Wrapper>
+);
 
 export default WhoToFollow;
