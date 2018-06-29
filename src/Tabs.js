@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 const MenuTabs = styled.ul`
   margin: 0px;
@@ -43,10 +43,10 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-const Tabs = () => (
+const Tabs = ({ match }) => (
   <MenuTabs>
     <Tab>
-      <StyledNavLink to="/EveryInteract" exact>
+      <StyledNavLink to={`${match.url}`} exact>
         <Text>
 Tweets
         </Text>
@@ -57,7 +57,7 @@ Tweets
     </Tab>
 
     <Tab>
-      <StyledNavLink to="/EveryInteract/Following" exact>
+      <StyledNavLink to={`${match.url}/Following`}>
         <Text>
 Following
         </Text>
@@ -68,7 +68,7 @@ Following
     </Tab>
 
     <Tab>
-      <StyledNavLink to="/EveryInteract/Followers" exact>
+      <StyledNavLink to={`${match.url}/Followers`}>
         <Text>
 Followers
         </Text>
@@ -79,7 +79,7 @@ Followers
     </Tab>
 
     <Tab>
-      <StyledNavLink to="/EveryInteract/Likes" exact>
+      <StyledNavLink to={`${match.url}/Likes`}>
         <Text>
 Likes
         </Text>
@@ -90,7 +90,7 @@ Likes
     </Tab>
 
     <Tab>
-      <StyledNavLink to="/EveryInteract/Lists" exact>
+      <StyledNavLink to={`${match.url}/Lists`} exact>
         <Text>
 Lists
         </Text>
@@ -102,4 +102,4 @@ Lists
   </MenuTabs>
 );
 
-export default Tabs;
+export default withRouter(Tabs);

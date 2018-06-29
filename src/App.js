@@ -1,30 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Helmet } from 'react-helmet';
-import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Profile from './Profile';
+
 import Header from './Header';
 import Navigation from './Navigation';
 import TwitterLogo from './TwitterLogo';
 import logo from './img/icon-twitter-logo.svg';
 import NavigationRight from './NavigationRight';
 
-import CoverImage from './CoverImage';
-
-import Statistics from './Statistics';
-import Tabs from './Tabs';
-import UserActions from './UserActions';
-
-import ProfileInfo from './ProfileInfo';
-import FollowersYouKnow from './FollowersYouKnow';
-import PhotosAndVideos from './PhotosAndVideos';
-
-import Feed from './Feed';
-
-import WhoToFollow from './WhoToFollow';
-import About from './About';
-import Trends from './Trends';
+const StyledApp = styled.div`
+  box-sizing: border-box;
+  font-family: Helvetica;
+`;
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -32,40 +21,9 @@ const HeaderWrapper = styled.div`
   align-items: center;
 `;
 
-const StatiscticsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const MainSection = styled.main`
-  background: #e6ecf0;
-`;
-
-const MainSectionWrapper = styled.div`
-  display: flex;
-`;
-
-const RightColumn = styled.div`
-  margin-top: 9px;
-`;
-
-const StyledApp = styled.div`
-  box-sizing: border-box;
-  font-family: Helvetica;
-`;
-
 const App = () => (
   <Router>
     <StyledApp>
-      <Redirect from="/" to="/EveryInteract" />
-
-      <Helmet>
-        <title>
-Twitter
-        </title>
-      </Helmet>
-      <Profile />
-
       <Header>
         <div className="container">
           <HeaderWrapper>
@@ -75,41 +33,17 @@ Twitter
           </HeaderWrapper>
         </div>
       </Header>
-
-      <CoverImage />
-
-      <Statistics>
-        <div className="container">
-          <div className="col-lg-offset-3">
-            <StatiscticsWrapper>
-              <Tabs />
-              <UserActions />
-            </StatiscticsWrapper>
-          </div>
-        </div>
-      </Statistics>
-
-      <MainSection>
-        <div className="container">
-          <MainSectionWrapper>
-            <div className="col-lg-3">
-              <ProfileInfo />
-              <FollowersYouKnow />
-              <PhotosAndVideos />
-            </div>
-            <div className="col-lg-6">
-              <Feed />
-            </div>
-            <div className="col-lg-3">
-              <RightColumn>
-                <WhoToFollow />
-                <Trends />
-                <About />
-              </RightColumn>
-            </div>
-          </MainSectionWrapper>
-        </div>
-      </MainSection>
+      <Switch>
+        <Route
+          path="/:direction(about|help_center|terms|privacy_policy|cookies|ads_info|followers_you_know|media|search_people)"
+          render={() => (
+            <h2>
+Some page
+            </h2>
+          )}
+        />
+        <Route path="/" component={Profile} />
+      </Switch>
     </StyledApp>
   </Router>
 );

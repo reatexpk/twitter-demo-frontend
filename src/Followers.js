@@ -14,27 +14,51 @@ const Image = styled.img`
   margin-right: 5px;
 `;
 
-const Followers = ({ imageSrc }) => (
-  <StyledFollowers>
-    <Link href="/">
-      <Image src={imageSrc[0]} />
+const Followers = () => {
+  const dataFollowers = [
+    {
+      to: '/SomeFollower',
+      img: `${process.env.PUBLIC_URL}/img/Follower1.png`,
+      description: 'followerDescr',
+    },
+    {
+      to: '/SomeFollower',
+      img: `${process.env.PUBLIC_URL}/img/Follower2.png`,
+      description: 'followerDescr',
+    },
+    {
+      to: '/SomeFollower',
+      img: `${process.env.PUBLIC_URL}/img/Follower3.png`,
+      description: 'followerDescr',
+    },
+    {
+      to: '/SomeFollower',
+      img: `${process.env.PUBLIC_URL}/img/Follower4.png`,
+      description: 'followerDescr',
+    },
+    {
+      to: '/SomeFollower',
+      img: `${process.env.PUBLIC_URL}/img/Follower5.png`,
+      description: 'followerDescr',
+    },
+    {
+      to: '/SomeFollower',
+      img: `${process.env.PUBLIC_URL}/img/Follower6.png`,
+      description: 'followerDescr',
+    },
+  ];
+
+  const followersList = dataFollowers.map(arg => (
+    <Link key={Math.random()} href={arg.to}>
+      <Image src={arg.img} alt={arg.descr} />
     </Link>
-    <Link href="/">
-      <Image src={imageSrc[1]} />
-    </Link>
-    <Link href="/">
-      <Image src={imageSrc[2]} />
-    </Link>
-    <Link href="/">
-      <Image src={imageSrc[3]} />
-    </Link>
-    <Link href="/">
-      <Image src={imageSrc[4]} />
-    </Link>
-    <Link href="/">
-      <Image src={imageSrc[5]} />
-    </Link>
-  </StyledFollowers>
-);
+  ));
+
+  return (
+    <StyledFollowers>
+      {followersList}
+    </StyledFollowers>
+  );
+};
 
 export default Followers;

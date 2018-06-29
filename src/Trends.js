@@ -39,29 +39,53 @@ const Dot = styled.span`
   color: #66757f;
 `;
 
-const Trends = () => (
-  <StyledTrends>
-    <Header>
-      <Title>
+const Trends = () => {
+  const dataTrends = [
+    {
+      title: '#BringYourDogToWorkDay',
+    },
+    {
+      title: '#FridayFeeling',
+      count: 12100,
+    },
+    {
+      title: '#BrexitAnniversary',
+      text: 'It’s one year since the UK voted to leave the European Union',
+    },
+    {
+      title: 'HMS Queen Elizabeth',
+      count: 1036,
+    },
+    {
+      title: 'Joe Budden',
+      count: 1036,
+    },
+    {
+      title: 'Trident',
+      count: 6136,
+    },
+  ];
+
+  const trendsList = dataTrends.map(arg => (
+    <Trend title={arg.title} count={arg.count} text={arg.text} key={Math.random()} />
+  ));
+
+  return (
+    <StyledTrends>
+      <Header>
+        <Title>
 United Kingdom Trends
-      </Title>
-      <Dot>
+        </Title>
+        <Dot>
 ·
-      </Dot>
-      <StyledLink href="">
+        </Dot>
+        <StyledLink href="">
 Change
-      </StyledLink>
-    </Header>
-    <Trend title="#BringYourDogToWorkDay" />
-    <Trend title="#FridayFeeling" count={12100} />
-    <Trend
-      title="#BrexitAnniversary"
-      text="It’s one year since the UK voted to leave the European Union"
-    />
-    <Trend title="HMS Queen Elizabeth" count={1036} />
-    <Trend title="Joe Budden" count={1036} />
-    <Trend title="Trident" count={6136} />
-  </StyledTrends>
-);
+        </StyledLink>
+      </Header>
+      {trendsList}
+    </StyledTrends>
+  );
+};
 
 export default Trends;

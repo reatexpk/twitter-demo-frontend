@@ -145,6 +145,7 @@ const PreviewSource = styled.p`
 `;
 
 const Tweet = ({
+  avatar,
   text,
   pinned,
   name,
@@ -184,7 +185,7 @@ Pinned Tweet
         </PinnedTweet>
       )}
       <Container>
-        <Avatar src={`${process.env.PUBLIC_URL}/img/TweetAvatar.png`} />
+        <Avatar src={avatar} />
         <Body>
           <Header>
             <Poster>

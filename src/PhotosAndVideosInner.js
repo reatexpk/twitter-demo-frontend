@@ -14,27 +14,51 @@ const Image = styled.img`
   margin-right: 5px;
 `;
 
-const PhotosAndVideosInner = ({ imageSrc }) => (
-  <StyledPhotosAndVideosInner>
-    <Link href="/">
-      <Image src={imageSrc[0]} />
+const PhotosAndVideosInner = () => {
+  const dataPhotos = [
+    {
+      to: '/SomeMedia',
+      img: `${process.env.PUBLIC_URL}/img/PAV1.png`,
+      description: 'photo',
+    },
+    {
+      to: '/SomeMedia',
+      img: `${process.env.PUBLIC_URL}/img/PAV2.png`,
+      description: 'photo',
+    },
+    {
+      to: '/SomeMedia',
+      img: `${process.env.PUBLIC_URL}/img/PAV3.png`,
+      description: 'photo',
+    },
+    {
+      to: '/SomeMedia',
+      img: `${process.env.PUBLIC_URL}/img/PAV4.png`,
+      description: 'photo',
+    },
+    {
+      to: '/SomeMedia',
+      img: `${process.env.PUBLIC_URL}/img/PAV5.png`,
+      description: 'photo',
+    },
+    {
+      to: '/SomeMedia',
+      img: `${process.env.PUBLIC_URL}/img/PAV6.png`,
+      description: 'photo',
+    },
+  ];
+
+  const photosAndVideosList = dataPhotos.map(arg => (
+    <Link key={Math.random()} href={arg.to}>
+      <Image src={arg.img} alt={arg.descr} />
     </Link>
-    <Link href="/">
-      <Image src={imageSrc[1]} />
-    </Link>
-    <Link href="/">
-      <Image src={imageSrc[2]} />
-    </Link>
-    <Link href="/">
-      <Image src={imageSrc[3]} />
-    </Link>
-    <Link href="/">
-      <Image src={imageSrc[4]} />
-    </Link>
-    <Link href="/">
-      <Image src={imageSrc[5]} />
-    </Link>
-  </StyledPhotosAndVideosInner>
-);
+  ));
+
+  return (
+    <StyledPhotosAndVideosInner>
+      {photosAndVideosList}
+    </StyledPhotosAndVideosInner>
+  );
+};
 
 export default PhotosAndVideosInner;

@@ -28,19 +28,10 @@ const Link = styled.a`
 const FollowersYouKnow = () => (
   <StyledFollowersYouKnow>
     <Icon src={iconFollowers} alt="Followers you know" />
-    <Link href="/">
+    <Link href="/followers_you_know">
 6 Followers you know
     </Link>
-    <Followers
-      imageSrc={[
-        `${process.env.PUBLIC_URL}/img/Follower1.png`,
-        `${process.env.PUBLIC_URL}/img/Follower2.png`,
-        `${process.env.PUBLIC_URL}/img/Follower3.png`,
-        `${process.env.PUBLIC_URL}/img/Follower4.png`,
-        `${process.env.PUBLIC_URL}/img/Follower5.png`,
-        `${process.env.PUBLIC_URL}/img/Follower6.png`,
-      ]}
-    />
+    <Followers />
   </StyledFollowersYouKnow>
 );
 

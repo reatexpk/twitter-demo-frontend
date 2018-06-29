@@ -28,7 +28,7 @@ const Text = styled.p`
 `;
 
 const FindPeopleYouKnow = () => (
-  <StyledFindPeopleYouKnow href="">
+  <StyledFindPeopleYouKnow href="/search_people">
     <Image src={iconPeople} />
     <Text>
 Find people you know

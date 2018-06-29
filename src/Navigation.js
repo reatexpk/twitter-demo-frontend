@@ -40,7 +40,7 @@ const Navigation = () => (
   <Nav>
     <Menu>
       <MenuItem>
-        <StyledLink to="/home">
+        <StyledLink to="/">
           <Icon src={homeIcon} />
           <MenuItemText>
 Home

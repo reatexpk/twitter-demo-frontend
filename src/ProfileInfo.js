@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 import tick from './img/icon-tick.png';
 import iconLocation from './img/icon-location.svg';
 import iconLink from './img/icon-link.svg';
@@ -102,27 +103,32 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const ProfileInfo = () => (
+const ProfileInfo = ({
+  match: {
+    params: { username },
+  },
+}) => (
   <StyledProfileInfo>
     <Avatar src={`${process.env.PUBLIC_URL}/img/ProfileAvatar.png`} />
     <AvoidWrapper>
       <HeaderWrapper>
         <Header>
-Every Interaction
+          {username}
         </Header>
         <VerificationTick src={tick} />
       </HeaderWrapper>
       <div>
         <Username>
-@EveryInteract
+          @
+          {username}
         </Username>
         <FollowsYou>
 Follows you
         </FollowsYou>
       </div>
       <Bio>
-          UX Design studio focussed problem solving creativity. Design to us is how can we make
-          things *work* amazing.
+        UX Design studio focussed problem solving creativity. Design to us is how can we make things
+        *work* amazing.
       </Bio>
       <Location>
         <Icon src={iconLocation} alt="Location" />
@@ -154,4 +160,4 @@ Message
   </StyledProfileInfo>
 );
 
-export default ProfileInfo;
+export default withRouter(ProfileInfo);

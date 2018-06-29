@@ -28,19 +28,10 @@ const Link = styled.a`
 const PhotosAndVideos = () => (
   <StyledPhotosAndVideos>
     <Icon src={iconVideos} alt="Photos and videos" />
-    <Link href="/">
+    <Link href="/media">
 522 Photos and videos
     </Link>
-    <PhotosAndVideosInner
-      imageSrc={[
-        `${process.env.PUBLIC_URL}/img/PAV1.png`,
-        `${process.env.PUBLIC_URL}/img/PAV2.png`,
-        `${process.env.PUBLIC_URL}/img/PAV3.png`,
-        `${process.env.PUBLIC_URL}/img/PAV4.png`,
-        `${process.env.PUBLIC_URL}/img/PAV5.png`,
-        `${process.env.PUBLIC_URL}/img/PAV6.png`,
-      ]}
-    />
+    <PhotosAndVideosInner />
   </StyledPhotosAndVideos>
 );
 

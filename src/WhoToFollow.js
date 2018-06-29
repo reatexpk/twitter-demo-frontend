@@ -32,43 +32,55 @@ const Dot = styled.span`
   color: #66757f;
 `;
 
-const WhoToFollow = () => (
-  <Wrapper>
-    <Header>
-      <Title>
+const WhoToFollow = () => {
+  const dataUsers = [
+    {
+      to: '/AppleInsider',
+      img: `${process.env.PUBLIC_URL}/img/AppleInsider.png`,
+      name: 'AppleInsider',
+      nickname: '@appleinsider',
+    },
+    {
+      to: '/Creode',
+      img: `${process.env.PUBLIC_URL}/img/Creode.png`,
+      name: 'Creode',
+      nickname: '@Creode',
+    },
+    {
+      to: '/EpiphanySearch',
+      img: `${process.env.PUBLIC_URL}/img/EpiphanySearch.png`,
+      name: 'EpiphanySearch',
+      nickname: '@EpiphanySearch',
+    },
+  ];
+
+  const whoToFollowList = dataUsers.map(arg => (
+    <User key={Math.random()} href={arg.to} src={arg.img} name={arg.name} nickname={arg.nickname} />
+  ));
+
+  return (
+    <Wrapper>
+      <Header>
+        <Title>
 Who to follow
-      </Title>
-      <Dot>
+        </Title>
+        <Dot>
 ·
-      </Dot>
-      <StyledLink href="">
+        </Dot>
+        <StyledLink href="">
 Refresh
-      </StyledLink>
-      <Dot>
+        </StyledLink>
+        <Dot>
 ·
-      </Dot>
-      <StyledLink href="">
+        </Dot>
+        <StyledLink href="">
 View all
-      </StyledLink>
-    </Header>
-    <User
-      src={`${process.env.PUBLIC_URL}/img/AppleInsider.png`}
-      name="AppleInsider"
-      nickname="@appleinsider"
-    />
-    <User
-      src={`${process.env.PUBLIC_URL}/img/Creode.png`}
-      name="Creode"
-      nickname="@Creode"
-      verificated
-    />
-    <User
-      src={`${process.env.PUBLIC_URL}/img/EpiphanySearch.png`}
-      name="EpiphanySearch"
-      nickname="@EpiphanySearch"
-    />
-    <FindPeopleYouKnow />
-  </Wrapper>
-);
+        </StyledLink>
+      </Header>
+      {whoToFollowList}
+      <FindPeopleYouKnow />
+    </Wrapper>
+  );
+};
 
 export default WhoToFollow;

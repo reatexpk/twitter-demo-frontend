@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import iconDelete from './img/icon-delete.png';
 import tick from './img/icon-tick.png';
 
@@ -69,19 +70,33 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const Link = styled.a`
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 const User = ({
   src, name, verificated, nickname,
 }) => (
   <Container>
-    <Avatar src={src} alt={name} />
+    <Link href="/SomeUser">
+      <Avatar src={src} alt={name} />
+    </Link>
     <Content>
-      <Name>
-        {name}
-      </Name>
+      <Link href="/SomeUser">
+        <Name>
+          {name}
+        </Name>
+      </Link>
       {verificated && <VerificationTick src={tick} />}
-      <Nickname>
-        {nickname}
-      </Nickname>
+      <Link href="/SomeUser">
+        <Nickname>
+          {nickname}
+        </Nickname>
+      </Link>
       <DeleteButton />
       <Button>
 Follow
