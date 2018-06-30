@@ -1,9 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import tick from "./img/icon-tick.png";
-import iconLocation from "./img/icon-location.svg";
-import iconLink from "./img/icon-link.svg";
-import iconJoined from "./img/icon-joined.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
+import tick from './img/icon-tick.png';
+import iconLocation from './img/icon-location.svg';
+import iconLink from './img/icon-link.svg';
+import iconJoined from './img/icon-joined.svg';
 
 const StyledProfileInfo = styled.section`
   position: relative;
@@ -102,42 +103,61 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const ProfileInfo = () => {
-  return (
-    <StyledProfileInfo>
-      <Avatar src={process.env.PUBLIC_URL + "/img/ProfileAvatar.png"} />
-      <AvoidWrapper>
-        <HeaderWrapper>
-          <Header>Every Interaction</Header>
-          <VerificationTick src={tick} />
-        </HeaderWrapper>
-        <div>
-          <Username>@EveryInteract</Username>
-          <FollowsYou>Follows you</FollowsYou>
-        </div>
-        <Bio>
-          UX Design studio focussed problem solving creativity. Design to us is
-          how can we make things *work* amazing.
-        </Bio>
-        <Location>
-          <Icon src={iconLocation} alt="Location" />
-          <span>London, UK</span>
-        </Location>
-        <Link href="https://everyinteraction.com">
-          <Icon src={iconLink} alt="Link" />
-          <span>everyinteraction.com</span>
-        </Link>
-        <JoinDate>
-          <Icon src={iconJoined} alt="Joined" />
-          <span>Joined May 2008</span>
-        </JoinDate>
-        <Actions>
-          <Button>Tweet to</Button>
-          <Button>Message</Button>
-        </Actions>
-      </AvoidWrapper>
-    </StyledProfileInfo>
-  );
-};
+const ProfileInfo = ({
+  match: {
+    params: { username },
+  },
+}) => (
+  <StyledProfileInfo>
+    <Avatar src={`${process.env.PUBLIC_URL}/img/ProfileAvatar.png`} />
+    <AvoidWrapper>
+      <HeaderWrapper>
+        <Header>
+          {username}
+        </Header>
+        <VerificationTick src={tick} />
+      </HeaderWrapper>
+      <div>
+        <Username>
+          @
+          {username}
+        </Username>
+        <FollowsYou>
+Follows you
+        </FollowsYou>
+      </div>
+      <Bio>
+        UX Design studio focussed problem solving creativity. Design to us is how can we make things
+        *work* amazing.
+      </Bio>
+      <Location>
+        <Icon src={iconLocation} alt="Location" />
+        <span>
+London, UK
+        </span>
+      </Location>
+      <Link href="https://everyinteraction.com">
+        <Icon src={iconLink} alt="Link" />
+        <span>
+everyinteraction.com
+        </span>
+      </Link>
+      <JoinDate>
+        <Icon src={iconJoined} alt="Joined" />
+        <span>
+Joined May 2008
+        </span>
+      </JoinDate>
+      <Actions>
+        <Button>
+Tweet to
+        </Button>
+        <Button>
+Message
+        </Button>
+      </Actions>
+    </AvoidWrapper>
+  </StyledProfileInfo>
+);
 
-export default ProfileInfo;
+export default withRouter(ProfileInfo);

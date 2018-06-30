@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import iconFollowers from "./img/icon-followers.png";
+import iconFollowers from './img/icon-followers.png';
 
-import Followers from "./Followers";
+import Followers from './Followers';
 
 const StyledFollowersYouKnow = styled.div`
   margin: 18px 0 31px 5px;
@@ -25,23 +25,14 @@ const Link = styled.a`
   }
 `;
 
-const FollowersYouKnow = () => {
-  return (
-    <StyledFollowersYouKnow>
-      <Icon src={iconFollowers} alt="Followers you know" />
-      <Link href="">6 Followers you know</Link>
-      <Followers
-        imageSrc={[
-          process.env.PUBLIC_URL + "/img/Follower1.png",
-          process.env.PUBLIC_URL + "/img/Follower2.png",
-          process.env.PUBLIC_URL + "/img/Follower3.png",
-          process.env.PUBLIC_URL + "/img/Follower4.png",
-          process.env.PUBLIC_URL + "/img/Follower5.png",
-          process.env.PUBLIC_URL + "/img/Follower6.png"
-        ]}
-      />
-    </StyledFollowersYouKnow>
-  );
-};
+const FollowersYouKnow = () => (
+  <StyledFollowersYouKnow>
+    <Icon src={iconFollowers} alt="Followers you know" />
+    <Link href="/followers-you-know">
+6 Followers you know
+    </Link>
+    <Followers />
+  </StyledFollowersYouKnow>
+);
 
 export default FollowersYouKnow;

@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledFollowers = styled.div`
   margin-left: 2px;
@@ -14,27 +14,55 @@ const Image = styled.img`
   margin-right: 5px;
 `;
 
-const Followers = props => {
+const dataFollowers = [
+  {
+    id: 1,
+    to: '/SomeFollower',
+    img: `${process.env.PUBLIC_URL}/img/Follower1.png`,
+    description: 'followerDescr',
+  },
+  {
+    id: 2,
+    to: '/SomeFollower',
+    img: `${process.env.PUBLIC_URL}/img/Follower2.png`,
+    description: 'followerDescr',
+  },
+  {
+    id: 3,
+    to: '/SomeFollower',
+    img: `${process.env.PUBLIC_URL}/img/Follower3.png`,
+    description: 'followerDescr',
+  },
+  {
+    id: 4,
+    to: '/SomeFollower',
+    img: `${process.env.PUBLIC_URL}/img/Follower4.png`,
+    description: 'followerDescr',
+  },
+  {
+    id: 5,
+    to: '/SomeFollower',
+    img: `${process.env.PUBLIC_URL}/img/Follower5.png`,
+    description: 'followerDescr',
+  },
+  {
+    id: 6,
+    to: '/SomeFollower',
+    img: `${process.env.PUBLIC_URL}/img/Follower6.png`,
+    description: 'followerDescr',
+  },
+];
+
+const Followers = () => {
+  const followersList = dataFollowers.map(follower => (
+    <Link key={follower.id} href={follower.to}>
+      <Image src={follower.img} alt={follower.descr} />
+    </Link>
+  ));
+
   return (
     <StyledFollowers>
-      <Link href="">
-        <Image src={props.imageSrc[0]} />
-      </Link>
-      <Link href="">
-        <Image src={props.imageSrc[1]} />
-      </Link>
-      <Link href="">
-        <Image src={props.imageSrc[2]} />
-      </Link>
-      <Link href="">
-        <Image src={props.imageSrc[3]} />
-      </Link>
-      <Link href="">
-        <Image src={props.imageSrc[4]} />
-      </Link>
-      <Link href="">
-        <Image src={props.imageSrc[5]} />
-      </Link>
+      {followersList}
     </StyledFollowers>
   );
 };

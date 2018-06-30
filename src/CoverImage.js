@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const url = process.env.PUBLIC_URL + "/img/CoverImage.png";
+const url = `${process.env.PUBLIC_URL}/img/CoverImage.png`;
 
 const CoverImage = styled.div`
   background: url(${url}) no-repeat;

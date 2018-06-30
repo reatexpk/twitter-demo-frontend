@@ -1,7 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import iconDelete from "./img/icon-delete.png";
-import tick from "./img/icon-tick.png";
+import React from 'react';
+import styled from 'styled-components';
+
+import iconDelete from './img/icon-delete.png';
+import tick from './img/icon-tick.png';
 
 const Container = styled.div`
   display: flex;
@@ -69,19 +70,39 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const User = props => {
-  return (
-    <Container>
-      <Avatar src={props.src} alt={props.name} />
-      <Content>
-        <Name>{props.name}</Name>
-        {props.verificated && <VerificationTick src={tick} />}
-        <Nickname>{props.nickname}</Nickname>
-        <DeleteButton />
-        <Button>Follow</Button>
-      </Content>
-    </Container>
-  );
-};
+const Link = styled.a`
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const User = ({
+  src, name, verificated, nickname,
+}) => (
+  <Container>
+    <Link href="/SomeUser">
+      <Avatar src={src} alt={name} />
+    </Link>
+    <Content>
+      <Link href="/SomeUser">
+        <Name>
+          {name}
+        </Name>
+      </Link>
+      {verificated && <VerificationTick src={tick} />}
+      <Link href="/SomeUser">
+        <Nickname>
+          {nickname}
+        </Nickname>
+      </Link>
+      <DeleteButton />
+      <Button>
+Follow
+      </Button>
+    </Content>
+  </Container>
+);
 
 export default User;

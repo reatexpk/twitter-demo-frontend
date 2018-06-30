@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import iconPeople from "./img/icon-people.png";
+import React from 'react';
+import styled from 'styled-components';
+import iconPeople from './img/icon-people.png';
 
 const StyledFindPeopleYouKnow = styled.a`
   display: flex;
@@ -27,13 +27,13 @@ const Text = styled.p`
   color: #1da1f2;
 `;
 
-const FindPeopleYouKnow = () => {
-  return (
-    <StyledFindPeopleYouKnow href="">
-      <Image src={iconPeople} />
-      <Text>Find people you know</Text>
-    </StyledFindPeopleYouKnow>
-  );
-};
+const FindPeopleYouKnow = () => (
+  <StyledFindPeopleYouKnow href="/search-people">
+    <Image src={iconPeople} />
+    <Text>
+Find people you know
+    </Text>
+  </StyledFindPeopleYouKnow>
+);
 
 export default FindPeopleYouKnow;
