@@ -35,7 +35,7 @@ const App = () => (
       </Header>
       <Switch>
         <Route
-          path="/:direction(about|help_center|terms|privacy_policy|cookies|ads_info|followers_you_know|media|search_people)"
+          path="/:direction(about|help-center|terms|privacy-policy|cookies|ads-info|followers-you_know|media|search-people)"
           render={() => (
             <h2>
 Some page

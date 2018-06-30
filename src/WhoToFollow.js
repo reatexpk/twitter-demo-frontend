@@ -32,30 +32,33 @@ const Dot = styled.span`
   color: #66757f;
 `;
 
-const WhoToFollow = () => {
-  const dataUsers = [
-    {
-      to: '/AppleInsider',
-      img: `${process.env.PUBLIC_URL}/img/AppleInsider.png`,
-      name: 'AppleInsider',
-      nickname: '@appleinsider',
-    },
-    {
-      to: '/Creode',
-      img: `${process.env.PUBLIC_URL}/img/Creode.png`,
-      name: 'Creode',
-      nickname: '@Creode',
-    },
-    {
-      to: '/EpiphanySearch',
-      img: `${process.env.PUBLIC_URL}/img/EpiphanySearch.png`,
-      name: 'EpiphanySearch',
-      nickname: '@EpiphanySearch',
-    },
-  ];
+const dataUsers = [
+  {
+    id: 1,
+    to: '/AppleInsider',
+    img: `${process.env.PUBLIC_URL}/img/AppleInsider.png`,
+    name: 'AppleInsider',
+    nickname: '@appleinsider',
+  },
+  {
+    id: 2,
+    to: '/Creode',
+    img: `${process.env.PUBLIC_URL}/img/Creode.png`,
+    name: 'Creode',
+    nickname: '@Creode',
+  },
+  {
+    id: 3,
+    to: '/EpiphanySearch',
+    img: `${process.env.PUBLIC_URL}/img/EpiphanySearch.png`,
+    name: 'EpiphanySearch',
+    nickname: '@EpiphanySearch',
+  },
+];
 
-  const whoToFollowList = dataUsers.map(arg => (
-    <User key={Math.random()} href={arg.to} src={arg.img} name={arg.name} nickname={arg.nickname} />
+const WhoToFollow = () => {
+  const whoToFollowList = dataUsers.map(user => (
+    <User key={user.id} href={user.to} src={user.img} name={user.name} nickname={user.nickname} />
   ));
 
   return (

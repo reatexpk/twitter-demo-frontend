@@ -28,7 +28,7 @@ const Link = styled.a`
 const FollowersYouKnow = () => (
   <StyledFollowersYouKnow>
     <Icon src={iconFollowers} alt="Followers you know" />
-    <Link href="/followers_you_know">
+    <Link href="/followers-you-know">
 6 Followers you know
     </Link>
     <Followers />

@@ -14,43 +14,49 @@ const Image = styled.img`
   margin-right: 5px;
 `;
 
-const PhotosAndVideosInner = () => {
-  const dataPhotos = [
-    {
-      to: '/SomeMedia',
-      img: `${process.env.PUBLIC_URL}/img/PAV1.png`,
-      description: 'photo',
-    },
-    {
-      to: '/SomeMedia',
-      img: `${process.env.PUBLIC_URL}/img/PAV2.png`,
-      description: 'photo',
-    },
-    {
-      to: '/SomeMedia',
-      img: `${process.env.PUBLIC_URL}/img/PAV3.png`,
-      description: 'photo',
-    },
-    {
-      to: '/SomeMedia',
-      img: `${process.env.PUBLIC_URL}/img/PAV4.png`,
-      description: 'photo',
-    },
-    {
-      to: '/SomeMedia',
-      img: `${process.env.PUBLIC_URL}/img/PAV5.png`,
-      description: 'photo',
-    },
-    {
-      to: '/SomeMedia',
-      img: `${process.env.PUBLIC_URL}/img/PAV6.png`,
-      description: 'photo',
-    },
-  ];
+const dataPhotos = [
+  {
+    id: 1,
+    to: '/SomeMedia',
+    img: `${process.env.PUBLIC_URL}/img/PAV1.png`,
+    description: 'photo',
+  },
+  {
+    id: 2,
+    to: '/SomeMedia',
+    img: `${process.env.PUBLIC_URL}/img/PAV2.png`,
+    description: 'photo',
+  },
+  {
+    id: 3,
+    to: '/SomeMedia',
+    img: `${process.env.PUBLIC_URL}/img/PAV3.png`,
+    description: 'photo',
+  },
+  {
+    id: 4,
+    to: '/SomeMedia',
+    img: `${process.env.PUBLIC_URL}/img/PAV4.png`,
+    description: 'photo',
+  },
+  {
+    id: 5,
+    to: '/SomeMedia',
+    img: `${process.env.PUBLIC_URL}/img/PAV5.png`,
+    description: 'photo',
+  },
+  {
+    id: 6,
+    to: '/SomeMedia',
+    img: `${process.env.PUBLIC_URL}/img/PAV6.png`,
+    description: 'photo',
+  },
+];
 
-  const photosAndVideosList = dataPhotos.map(arg => (
-    <Link key={Math.random()} href={arg.to}>
-      <Image src={arg.img} alt={arg.descr} />
+const PhotosAndVideosInner = () => {
+  const photosAndVideosList = dataPhotos.map(media => (
+    <Link key={media.id} href={media.to}>
+      <Image src={media.img} alt={media.descr} />
     </Link>
   ));
 

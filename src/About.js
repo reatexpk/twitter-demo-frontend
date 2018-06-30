@@ -25,7 +25,7 @@ const About = () => (
 About
     </StyledLink>
     {' '}
-    <StyledLink to="/help_center">
+    <StyledLink to="/help-center">
 Help Center
     </StyledLink>
     {' '}
@@ -33,7 +33,7 @@ Help Center
 Terms
     </StyledLink>
     {' '}
-    <StyledLink to="/privacy_policy">
+    <StyledLink to="/privacy-policy">
 Privacy policy
     </StyledLink>
     {' '}
@@ -41,7 +41,7 @@ Privacy policy
 Cookies
     </StyledLink>
     {' '}
-    <StyledLink to="/ads_info">
+    <StyledLink to="/ads-info">
 Ads info
     </StyledLink>
   </StyledAbout>

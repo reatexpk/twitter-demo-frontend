@@ -39,35 +39,41 @@ const Dot = styled.span`
   color: #66757f;
 `;
 
-const Trends = () => {
-  const dataTrends = [
-    {
-      title: '#BringYourDogToWorkDay',
-    },
-    {
-      title: '#FridayFeeling',
-      count: 12100,
-    },
-    {
-      title: '#BrexitAnniversary',
-      text: 'It’s one year since the UK voted to leave the European Union',
-    },
-    {
-      title: 'HMS Queen Elizabeth',
-      count: 1036,
-    },
-    {
-      title: 'Joe Budden',
-      count: 1036,
-    },
-    {
-      title: 'Trident',
-      count: 6136,
-    },
-  ];
+const dataTrends = [
+  {
+    id: 1,
+    title: '#BringYourDogToWorkDay',
+  },
+  {
+    id: 2,
+    title: '#FridayFeeling',
+    count: 12100,
+  },
+  {
+    id: 3,
+    title: '#BrexitAnniversary',
+    text: 'It’s one year since the UK voted to leave the European Union',
+  },
+  {
+    id: 4,
+    title: 'HMS Queen Elizabeth',
+    count: 1036,
+  },
+  {
+    id: 5,
+    title: 'Joe Budden',
+    count: 1036,
+  },
+  {
+    id: 6,
+    title: 'Trident',
+    count: 6136,
+  },
+];
 
-  const trendsList = dataTrends.map(arg => (
-    <Trend title={arg.title} count={arg.count} text={arg.text} key={Math.random()} />
+const Trends = () => {
+  const trendsList = dataTrends.map(trend => (
+    <Trend title={trend.title} count={trend.count} text={trend.text} key={trend.id} />
   ));
 
   return (
