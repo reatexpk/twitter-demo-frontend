@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import {
+  Switch, Route, withRouter, NavLink,
+} from 'react-router-dom';
 
 import Tweet from './Tweet';
 
@@ -14,11 +17,19 @@ const TweetsTabs = styled.ul`
   border: 1px solid #e1e8ed;
 `;
 
-const Link = styled.a`
+const StyledNavLink = styled(NavLink)`
   display: inline-block;
   outline: none;
   text-decoration: none;
-  color: ${({ active }) => (active ? '#000000' : '#1da1f2')};
+  cursor: pointer;
+  color: #1da1f2;
+  &.active {
+    color: #000000;
+    cursor: default;
+  }
+  &:hover {
+    color: #000000;
+  }
 `;
 
 const TweetsTab = styled.li`
@@ -76,7 +87,7 @@ const dataTweets = [
   },
 ];
 
-const Feed = () => {
+const Feed = ({ match }) => {
   const tweetsList = dataTweets.map(tweet => (
     <Tweet
       key={tweet.id}
@@ -102,28 +113,46 @@ const Feed = () => {
   return (
     <StyledFeed>
       <TweetsTabs>
-        <Link href="/" active>
+        <StyledNavLink to={`${match.url}`} exact>
           <TweetsTab>
 Tweets
           </TweetsTab>
-        </Link>
+        </StyledNavLink>
 
-        <Link href="/">
+        <StyledNavLink to={`${match.url}/with-replies`}>
           <TweetsTab>
 Tweets & Replies
           </TweetsTab>
-        </Link>
+        </StyledNavLink>
 
-        <Link href="/">
+        <StyledNavLink to={`${match.url}/with-media`}>
           <TweetsTab>
 Media
           </TweetsTab>
-        </Link>
+        </StyledNavLink>
       </TweetsTabs>
 
-      {tweetsList}
+      <Switch>
+        <Route
+          path={`${match.url}/with-replies`}
+          render={() => (
+            <h2>
+Replies
+            </h2>
+          )}
+        />
+        <Route
+          path={`${match.url}/with-media`}
+          render={() => (
+            <h2>
+Media
+            </h2>
+          )}
+        />
+        <Route path={`${match.url}`} render={() => tweetsList} />
+      </Switch>
     </StyledFeed>
   );
 };
 
-export default Feed;
+export default withRouter(Feed);

@@ -105,7 +105,7 @@ Lists
               render={() => (
                 <Fragment>
                   <div className="col-lg-6">
-                    <Feed />
+                    <Route path={`${match.url}`} component={Feed} />
                   </div>
                 </Fragment>
               )}
