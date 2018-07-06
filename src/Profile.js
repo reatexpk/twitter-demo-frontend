@@ -27,7 +27,7 @@ class Profile extends React.Component {
         <Helmet>
           <title>
             Twitter |
-            {` ${userData.display_name}`}
+            {` ${userData.display_name || ' '}`}
           </title>
         </Helmet>
 
