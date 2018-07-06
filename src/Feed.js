@@ -77,7 +77,7 @@ class Feed extends React.Component {
         date={tweet.created_at}
         sharedFromAnotherSite={tweet.sharedFromAnotherSite}
         content={tweet.content}
-        imageSrc={tweet.imageSrc}
+        media={tweet.media_attachments}
         previewImageSrc={tweet.previewImageSrc}
         previewHeader={tweet.previewHeader}
         previewText={tweet.previewText}

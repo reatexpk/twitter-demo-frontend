@@ -167,7 +167,7 @@ const Tweet = ({
   previewImageSrc,
   previewHeader,
   previewText,
-  imageSrc,
+  media,
   comments,
   retweeted,
   retweets,
@@ -184,6 +184,10 @@ const Tweet = ({
   function LinkifiedTextSmall() {
     return <TextSmall dangerouslySetInnerHTML={createMarkup()} />;
   }
+
+  const mediaList = media.map(attachment => (
+    <Attachment key={attachment.id} src={attachment.preview_url} />
+  ));
 
   return (
     <div>
@@ -231,7 +235,7 @@ Pinned Tweet
               </a>
             </div>
           )}
-          {imageSrc && <Attachment src={imageSrc} />}
+          {media.length !== 0 && mediaList}
           <Actions>
             <Comments>
               <Icon src={commentsIcon} alt="Comments" />
