@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
+import { format } from 'date-fns';
+
 import tick from './img/icon-tick.png';
 import iconLocation from './img/icon-location.svg';
 import iconLink from './img/icon-link.svg';
@@ -12,8 +14,11 @@ const StyledProfileInfo = styled.section`
 `;
 
 const Avatar = styled.img`
+  width: 210px;
+  height: 210px;
   position: absolute;
   top: -180px;
+  border-radius: 100%;
 `;
 
 const AvoidWrapper = styled.div`
@@ -70,6 +75,9 @@ const Link = styled.a`
   font-size: 14px;
   color: #657786;
   text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 const JoinDate = styled.div`
   line-height: 28px;
@@ -103,61 +111,66 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const ProfileInfo = ({
-  match: {
-    params: { username },
-  },
-}) => (
-  <StyledProfileInfo>
-    <Avatar src={`${process.env.PUBLIC_URL}/img/ProfileAvatar.png`} />
-    <AvoidWrapper>
-      <HeaderWrapper>
-        <Header>
-          {username}
-        </Header>
-        <VerificationTick src={tick} />
-      </HeaderWrapper>
-      <div>
-        <Username>
-          @
-          {username}
-        </Username>
-        <FollowsYou>
+class ProfileInfo extends React.Component {
+  render() {
+    const { userData } = this.props;
+    function createMarkup() {
+      return { __html: userData.note };
+    }
+    function BioHTML() {
+      return <Bio dangerouslySetInnerHTML={createMarkup()} />;
+    }
+    return (
+      <StyledProfileInfo>
+        <Avatar src={userData.avatar_static} />
+        <AvoidWrapper>
+          <HeaderWrapper>
+            <Header>
+              {userData.display_name}
+            </Header>
+            <VerificationTick src={tick} />
+          </HeaderWrapper>
+          <div>
+            <Username>
+              @
+              {userData.username}
+            </Username>
+            <FollowsYou>
 Follows you
-        </FollowsYou>
-      </div>
-      <Bio>
-        UX Design studio focussed problem solving creativity. Design to us is how can we make things
-        *work* amazing.
-      </Bio>
-      <Location>
-        <Icon src={iconLocation} alt="Location" />
-        <span>
+            </FollowsYou>
+          </div>
+          {BioHTML()}
+          <Location>
+            <Icon src={iconLocation} alt="Location" />
+            <span>
 London, UK
-        </span>
-      </Location>
-      <Link href="https://everyinteraction.com">
-        <Icon src={iconLink} alt="Link" />
-        <span>
-everyinteraction.com
-        </span>
-      </Link>
-      <JoinDate>
-        <Icon src={iconJoined} alt="Joined" />
-        <span>
-Joined May 2008
-        </span>
-      </JoinDate>
-      <Actions>
-        <Button>
+            </span>
+          </Location>
+          <Link href={userData.url}>
+            <Icon src={iconLink} alt="Link" />
+            <span>
+              {userData.url}
+            </span>
+          </Link>
+          <JoinDate>
+            <Icon src={iconJoined} alt="Joined" />
+            <span>
+              Joined
+              {` ${format(userData.created_at, 'YYYY MMM')}`}
+            </span>
+          </JoinDate>
+          <Actions>
+            <Button>
 Tweet to
-        </Button>
-        <Button>
+            </Button>
+            <Button>
 Message
-        </Button>
-      </Actions>
-    </AvoidWrapper>
-  </StyledProfileInfo>
-);
+            </Button>
+          </Actions>
+        </AvoidWrapper>
+      </StyledProfileInfo>
+    );
+  }
+}
 
 export default withRouter(ProfileInfo);

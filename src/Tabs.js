@@ -43,15 +43,21 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-const Tabs = ({ match }) => (
+const isMainNavActive = (match, location) => {
+  const matches = [`${match.url}`, `${match.url}/with-replies`, `${match.url}/with-media`];
+
+  return matches.some(el => el === (location && location.pathname));
+};
+
+const Tabs = ({ userData, match }) => (
   <MenuTabs>
     <Tab>
-      <StyledNavLink to={`${match.url}`} exact>
+      <StyledNavLink to={`${match.url}`} isActive={isMainNavActive}>
         <Text>
 Tweets
         </Text>
         <Quantity>
-8,058
+          {userData.statuses_count}
         </Quantity>
       </StyledNavLink>
     </Tab>
@@ -62,7 +68,7 @@ Tweets
 Following
         </Text>
         <Quantity>
-721
+          {userData.following_count}
         </Quantity>
       </StyledNavLink>
     </Tab>
@@ -73,7 +79,7 @@ Following
 Followers
         </Text>
         <Quantity>
-1,815
+          {userData.followers_count}
         </Quantity>
       </StyledNavLink>
     </Tab>
@@ -90,7 +96,7 @@ Likes
     </Tab>
 
     <Tab>
-      <StyledNavLink to={`${match.url}/Lists`} exact>
+      <StyledNavLink to={`${match.url}/Lists`}>
         <Text>
 Lists
         </Text>

@@ -35,93 +35,94 @@ const RightColumn = styled.div`
   margin-top: 9px;
 `;
 
-const MainContent = ({ match }) => (
-  <Fragment>
-    <CoverImage />
+const MainContent = ({ match, userData }) => {
+  const { header_static: headerStatic } = userData;
+  return (
+    <Fragment>
+      <CoverImage src={headerStatic} />
 
-    <Statistics>
-      <div className="container">
-        <div className="col-lg-offset-3">
-          <StatiscticsWrapper>
-            <Tabs />
-            <UserActions />
-          </StatiscticsWrapper>
+      <Statistics>
+        <div className="container">
+          <div className="col-lg-offset-3">
+            <StatiscticsWrapper>
+              <Tabs userData={userData} />
+              <UserActions />
+            </StatiscticsWrapper>
+          </div>
         </div>
-      </div>
-    </Statistics>
+      </Statistics>
 
-    <MainSection>
-      <div className="container">
-        <MainSectionWrapper>
-          <div className="col-lg-3">
-            <ProfileInfo />
-            <FollowersYouKnow />
-            <PhotosAndVideos />
-          </div>
+      <MainSection>
+        <div className="container">
+          <MainSectionWrapper>
+            <div className="col-lg-3">
+              <ProfileInfo userData={userData} />
+              <FollowersYouKnow />
+              <PhotosAndVideos />
+            </div>
 
-          <Switch>
-            <Route
-              path={`${match.url}/Following`}
-              render={() => (
-                <div className="col-lg-6">
-                  <h2>
-Following
-                  </h2>
-                </div>
-              )}
-            />
-            <Route
-              path={`${match.url}/Followers`}
-              render={() => (
-                <div className="col-lg-6">
-                  <h2>
-Followers
-                  </h2>
-                </div>
-              )}
-            />
-            <Route
-              path={`${match.url}/Likes`}
-              render={() => (
-                <div className="col-lg-6">
-                  <h2>
-Likes
-                  </h2>
-                </div>
-              )}
-            />
-            <Route
-              path={`${match.url}/Lists`}
-              render={() => (
-                <div className="col-lg-6">
-                  <h2>
-Lists
-                  </h2>
-                </div>
-              )}
-            />
-            <Route
-              path={`${match.url}`}
-              render={() => (
-                <Fragment>
+            <Switch>
+              <Route
+                path={`${match.url}/Following`}
+                render={() => (
                   <div className="col-lg-6">
-                    <Feed />
+                    <h2>
+Following
+                    </h2>
                   </div>
-                </Fragment>
-              )}
-            />
-          </Switch>
-          <div className="col-lg-3">
-            <RightColumn>
-              <WhoToFollow />
-              <Trends />
-              <About />
-            </RightColumn>
-          </div>
-        </MainSectionWrapper>
-      </div>
-    </MainSection>
-  </Fragment>
-);
+                )}
+              />
+              <Route
+                path={`${match.url}/Followers`}
+                render={() => (
+                  <div className="col-lg-6">
+                    <h2>
+Followers
+                    </h2>
+                  </div>
+                )}
+              />
+              <Route
+                path={`${match.url}/Likes`}
+                render={() => (
+                  <div className="col-lg-6">
+                    <h2>
+Likes
+                    </h2>
+                  </div>
+                )}
+              />
+              <Route
+                path={`${match.url}/Lists`}
+                render={() => (
+                  <div className="col-lg-6">
+                    <h2>
+Lists
+                    </h2>
+                  </div>
+                )}
+              />
+              <Route
+                path={`${match.url}`}
+                render={() => (
+                  <div className="col-lg-6">
+                    <Route path="/:id" render={() => <Feed />} />
+                  </div>
+                )}
+              />
+            </Switch>
+            <div className="col-lg-3">
+              <RightColumn>
+                <WhoToFollow />
+                <Trends />
+                <About />
+              </RightColumn>
+            </div>
+          </MainSectionWrapper>
+        </div>
+      </MainSection>
+    </Fragment>
+  );
+};
 
 export default withRouter(MainContent);

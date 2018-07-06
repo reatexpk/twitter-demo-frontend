@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { format } from 'date-fns';
+
 import iconPinned from './img/icon-pinned.svg';
 import commentsIcon from './img/icon-comments.svg';
 import retweetsIcon from './img/icon-retweet.svg';
@@ -36,6 +38,8 @@ const Avatar = styled.img`
 `;
 
 const Body = styled.div`
+  overflow: hidden;
+  padding-right: 10px;
   a {
     text-decoration: none;
   }
@@ -61,14 +65,21 @@ const Poster = styled.h6`
   color: #292f33;
 `;
 
-const Text = styled.p`
+const Text = styled.div`
   margin: 0 0 17px 0;
   line-height: 30px;
   font-size: 25px;
   color: #292f33;
+  p {
+    margin: 0 0;
+  }
   a {
     color: #1da1f2;
     text-decoration: none;
+    word-wrap: break-word;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
@@ -146,7 +157,7 @@ const PreviewSource = styled.p`
 
 const Tweet = ({
   avatar,
-  text,
+  content,
   pinned,
   name,
   nickname,
@@ -156,7 +167,7 @@ const Tweet = ({
   previewImageSrc,
   previewHeader,
   previewText,
-  imageSrc,
+  media,
   comments,
   retweeted,
   retweets,
@@ -164,7 +175,7 @@ const Tweet = ({
   loves,
 }) => {
   function createMarkup() {
-    return { __html: text };
+    return { __html: content };
   }
 
   function LinkifiedText() {
@@ -173,6 +184,10 @@ const Tweet = ({
   function LinkifiedTextSmall() {
     return <TextSmall dangerouslySetInnerHTML={createMarkup()} />;
   }
+
+  const mediaList = media.map(attachment => (
+    <Attachment key={attachment.id} src={attachment.preview_url} />
+  ));
 
   return (
     <div>
@@ -192,10 +207,10 @@ Pinned Tweet
               {name}
             </Poster>
             <Info>
-              {nickname}
+              {`@${nickname}`}
               {' '}
 •
-              {date}
+              {format(date, 'DD MMM')}
             </Info>
           </Header>
           {!sharedFromAnotherSite && LinkifiedText()}
@@ -220,7 +235,7 @@ Pinned Tweet
               </a>
             </div>
           )}
-          {imageSrc && <Attachment src={imageSrc} />}
+          {media.length !== 0 && mediaList}
           <Actions>
             <Comments>
               <Icon src={commentsIcon} alt="Comments" />

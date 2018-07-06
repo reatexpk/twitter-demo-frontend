@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import {
+  Switch, Route, withRouter, NavLink,
+} from 'react-router-dom';
 
 import Tweet from './Tweet';
 
 const StyledFeed = styled.section`
   margin-top: 9px;
   background-color: #ffffff;
+  white-space: pre-wrap;
 `;
 
 const TweetsTabs = styled.ul`
@@ -14,11 +18,19 @@ const TweetsTabs = styled.ul`
   border: 1px solid #e1e8ed;
 `;
 
-const Link = styled.a`
+const StyledNavLink = styled(NavLink)`
   display: inline-block;
   outline: none;
   text-decoration: none;
-  color: ${({ active }) => (active ? '#000000' : '#1da1f2')};
+  cursor: pointer;
+  color: #1da1f2;
+  &.active {
+    color: #000000;
+    cursor: default;
+  }
+  &:hover {
+    color: #000000;
+  }
 `;
 
 const TweetsTab = styled.li`
@@ -28,102 +40,114 @@ const TweetsTab = styled.li`
   font-size: 18px;
 `;
 
-const dataTweets = [
-  {
-    id: 1,
-    avatar: `${process.env.PUBLIC_URL}/img/TweetAvatar.png`,
-    name: 'Every Interaction',
-    nickname: '@EveryInteract',
-    date: '2 Mar 2015',
-    sharedFromAnotherSite: false,
-    text:
-      "We’ve made some more resources for all you wonderful <a href='/search?q=design'>#design</a> folk <a href='https://everyinteraction.com/resources/'>everyinteraction.com/resources/</a> <a href='search?q=webdesign'>#webdesign</a> <a href='search?q=UI'>#UI</a>",
-    imageSrc: `${process.env.PUBLIC_URL}/img/Tweet1.png`,
-    loves: 47,
-    retweets: 17,
-    pinned: true,
-    loved: true,
-  },
-  {
-    id: 2,
-    avatar: `${process.env.PUBLIC_URL}/img/TweetAvatar.png`,
-    name: 'Every Interaction',
-    nickname: '@EveryInteract',
-    date: '23h',
-    sharedFromAnotherSite: false,
-    text:
-      "Our new website concept; Taking you from… @ Every Interaction <a href='https://instagram.com/p/BNFGrfhBP3M/'>instagram.com/p/BNFGrfhBP3M/</a>",
-    loves: 2,
-    retweets: 3,
-    comments: 1,
-  },
-  {
-    id: 3,
-    avatar: `${process.env.PUBLIC_URL}/img/TweetAvatar.png`,
-    name: 'Every Interaction',
-    nickname: '@EveryInteract',
-    date: 'Nov 18',
-    sharedFromAnotherSite: true,
-    text:
-      'Variable web fonts are coming, and will open a world of opportunities for weight use online',
-    previewImageSrc: `${process.env.PUBLIC_URL}/img/Tweet3.png`,
-    previewHeader: 'The Future of Web Fonts',
-    previewText:
-      'We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…',
-    previewSource: 'vilijamis.com',
-    loves: 0,
-    retweets: 0,
-  },
-];
+const NoTweetsYet = styled.h2`
+  text-align: center;
+  margin: 0 0;
+  padding: 20px;
+`;
 
-const Feed = () => {
-  const tweetsList = dataTweets.map(tweet => (
-    <Tweet
-      key={tweet.id}
-      avatar={tweet.avatar}
-      name={tweet.name}
-      nickname={tweet.nickname}
-      date={tweet.date}
-      sharedFromAnotherSite={tweet.sharedFromAnotherSite}
-      text={tweet.text}
-      imageSrc={tweet.imageSrc}
-      previewImageSrc={tweet.previewImageSrc}
-      previewHeader={tweet.previewHeader}
-      previewText={tweet.previewText}
-      previewSource={tweet.previewSource}
-      loves={tweet.loves}
-      loved={tweet.loved}
-      retweets={tweet.retweets}
-      retweeted={tweet.retweeted}
-      comments={tweet.comments}
-    />
-  ));
+class Feed extends React.Component {
+  state = {
+    tweets: [],
+    loaded: false,
+  };
 
-  return (
-    <StyledFeed>
-      <TweetsTabs>
-        <Link href="/" active>
-          <TweetsTab>
+  componentDidMount() {
+    const { match } = this.props;
+    const { id } = match.params;
+    const url = 'https://twitter-demo.erodionov.ru';
+    const secretCode = process.env.REACT_APP_SECRET_CODE;
+
+    fetch(`${url}/api/v1/accounts/${id}/statuses?access_token=${secretCode}`)
+      .then(res => res.json())
+      .then(data => this.setState({
+        tweets: data,
+        loaded: true,
+      }));
+  }
+
+  render() {
+    const { tweets, loaded } = this.state;
+    const { match } = this.props;
+    const tweetsList = tweets.map(tweet => (
+      <Tweet
+        key={tweet.id}
+        avatar={tweet.account.avatar_static}
+        name={tweet.account.display_name}
+        nickname={tweet.account.username}
+        date={tweet.created_at}
+        sharedFromAnotherSite={tweet.sharedFromAnotherSite}
+        content={tweet.content}
+        media={tweet.media_attachments}
+        previewImageSrc={tweet.previewImageSrc}
+        previewHeader={tweet.previewHeader}
+        previewText={tweet.previewText}
+        previewSource={tweet.previewSource}
+        loves={tweet.favourites_count}
+        loved={tweet.favourited}
+        retweets={tweet.reblogs_count}
+        retweeted={tweet.reblogged}
+        comments={tweet.comments}
+        pinned={tweet.pinned}
+      />
+    ));
+
+    return (
+      <StyledFeed>
+        <TweetsTabs>
+          <StyledNavLink to={`${match.url}`} exact>
+            <TweetsTab>
 Tweets
-          </TweetsTab>
-        </Link>
+            </TweetsTab>
+          </StyledNavLink>
 
-        <Link href="/">
-          <TweetsTab>
+          <StyledNavLink to={`${match.url}/with-replies`}>
+            <TweetsTab>
 Tweets & Replies
-          </TweetsTab>
-        </Link>
+            </TweetsTab>
+          </StyledNavLink>
 
-        <Link href="/">
-          <TweetsTab>
+          <StyledNavLink to={`${match.url}/with-media`}>
+            <TweetsTab>
 Media
-          </TweetsTab>
-        </Link>
-      </TweetsTabs>
+            </TweetsTab>
+          </StyledNavLink>
+        </TweetsTabs>
 
-      {tweetsList}
-    </StyledFeed>
-  );
-};
+        <Switch>
+          <Route
+            path={`${match.url}/with-replies`}
+            render={() => (
+              <h2>
+Replies
+              </h2>
+            )}
+          />
+          <Route
+            path={`${match.url}/with-media`}
+            render={() => (
+              <h2>
+Media
+              </h2>
+            )}
+          />
+          <Route
+            path={`${match.url}`}
+            render={() => {
+              if (tweets.length === 0 && loaded) {
+                return (
+                  <NoTweetsYet>
+There are no tweets yet :(
+                  </NoTweetsYet>
+                );
+              }
+              return tweetsList;
+            }}
+          />
+        </Switch>
+      </StyledFeed>
+    );
+  }
+}
 
-export default Feed;
+export default withRouter(Feed);
