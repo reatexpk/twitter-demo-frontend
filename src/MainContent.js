@@ -45,7 +45,7 @@ const MainContent = ({ match, userData }) => {
         <div className="container">
           <div className="col-lg-offset-3">
             <StatiscticsWrapper>
-              <Tabs />
+              <Tabs userData={userData} />
               <UserActions />
             </StatiscticsWrapper>
           </div>

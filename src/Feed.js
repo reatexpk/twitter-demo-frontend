@@ -9,6 +9,7 @@ import Tweet from './Tweet';
 const StyledFeed = styled.section`
   margin-top: 9px;
   background-color: #ffffff;
+  white-space: pre-wrap;
 `;
 
 const TweetsTabs = styled.ul`
@@ -39,9 +40,16 @@ const TweetsTab = styled.li`
   font-size: 18px;
 `;
 
+const NoTweetsYet = styled.h2`
+  text-align: center;
+  margin: 0 0;
+  padding: 20px;
+`;
+
 class Feed extends React.Component {
   state = {
     tweets: [],
+    loaded: false,
   };
 
   componentDidMount() {
@@ -51,13 +59,15 @@ class Feed extends React.Component {
     const secretCode = process.env.REACT_APP_SECRET_CODE;
     fetch(`${url}/api/v1/accounts/${id}/statuses?access_token=${secretCode}`)
       .then(res => res.json())
-      .then(data => this.setState({ tweets: data }));
+      .then(data => this.setState({
+        tweets: data,
+        loaded: true,
+      }));
   }
 
   render() {
-    const { tweets } = this.state;
+    const { tweets, loaded } = this.state;
     const { match } = this.props;
-    console.log(tweets);
     const tweetsList = tweets.map(tweet => (
       <Tweet
         key={tweet.id}
@@ -120,7 +130,19 @@ Media
               </h2>
             )}
           />
-          <Route path={`${match.url}`} render={() => tweetsList} />
+          <Route
+            path={`${match.url}`}
+            render={() => {
+              if (tweets.length === 0 && loaded) {
+                return (
+                  <NoTweetsYet>
+There are no tweets yet :(
+                  </NoTweetsYet>
+                );
+              }
+              return tweetsList;
+            }}
+          />
         </Switch>
       </StyledFeed>
     );

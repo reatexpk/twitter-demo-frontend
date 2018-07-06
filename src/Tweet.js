@@ -38,6 +38,8 @@ const Avatar = styled.img`
 `;
 
 const Body = styled.div`
+  overflow: hidden;
+  padding-right: 10px;
   a {
     text-decoration: none;
   }
@@ -74,6 +76,7 @@ const Text = styled.div`
   a {
     color: #1da1f2;
     text-decoration: none;
+    word-wrap: break-word;
     &:hover {
       text-decoration: underline;
     }
@@ -203,7 +206,6 @@ Pinned Tweet
               {`@${nickname}`}
               {' '}
 •
-              {' '}
               {format(date, 'DD MMM')}
             </Info>
           </Header>
