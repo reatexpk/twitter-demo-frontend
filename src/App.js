@@ -42,7 +42,7 @@ Some page
             </h2>
           )}
         />
-        <Route path="/" component={Profile} />
+        <Route path="/:id" component={Profile} />
       </Switch>
     </StyledApp>
   </Router>

@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { format } from 'date-fns';
+
 import iconPinned from './img/icon-pinned.svg';
 import commentsIcon from './img/icon-comments.svg';
 import retweetsIcon from './img/icon-retweet.svg';
@@ -61,14 +63,20 @@ const Poster = styled.h6`
   color: #292f33;
 `;
 
-const Text = styled.p`
+const Text = styled.div`
   margin: 0 0 17px 0;
   line-height: 30px;
   font-size: 25px;
   color: #292f33;
+  p {
+    margin: 0 0;
+  }
   a {
     color: #1da1f2;
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
@@ -146,7 +154,7 @@ const PreviewSource = styled.p`
 
 const Tweet = ({
   avatar,
-  text,
+  content,
   pinned,
   name,
   nickname,
@@ -164,7 +172,7 @@ const Tweet = ({
   loves,
 }) => {
   function createMarkup() {
-    return { __html: text };
+    return { __html: content };
   }
 
   function LinkifiedText() {
@@ -192,10 +200,11 @@ Pinned Tweet
               {name}
             </Poster>
             <Info>
-              {nickname}
+              {`@${nickname}`}
               {' '}
 •
-              {date}
+              {' '}
+              {format(date, 'DD MMM')}
             </Info>
           </Header>
           {!sharedFromAnotherSite && LinkifiedText()}
