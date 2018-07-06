@@ -57,6 +57,7 @@ class Feed extends React.Component {
     const { id } = match.params;
     const url = 'https://twitter-demo.erodionov.ru';
     const secretCode = process.env.REACT_APP_SECRET_CODE;
+
     fetch(`${url}/api/v1/accounts/${id}/statuses?access_token=${secretCode}`)
       .then(res => res.json())
       .then(data => this.setState({
