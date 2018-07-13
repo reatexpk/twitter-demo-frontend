@@ -1,17 +1,29 @@
+// @flow
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 
 import MainContent from './MainContent';
 
-class Profile extends React.Component {
+type Props = {
+  userData: Object,
+  match: Object,
+};
+
+type State = {
+  userData: Object,
+};
+
+const secretCode = process.env.REACT_APP_SECRET_CODE;
+if (secretCode == null) throw new Error('Missing secret code');
+
+class Profile extends React.Component<Props, State> {
   state = {
-    userData: [],
+    userData: {},
   };
 
   componentDidMount() {
     const url = 'https://twitter-demo.erodionov.ru';
-    const secretCode = process.env.REACT_APP_SECRET_CODE;
     const { match } = this.props;
     const { id } = match.params;
 

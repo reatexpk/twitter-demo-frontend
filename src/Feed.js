@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import {
@@ -46,7 +47,19 @@ const NoTweetsYet = styled.h2`
   padding: 20px;
 `;
 
-class Feed extends React.Component {
+type State = {
+  tweets: Array<Object>,
+  loaded: boolean,
+};
+
+type Props = {
+  match: Object,
+};
+
+const secretCode = process.env.REACT_APP_SECRET_CODE;
+if (secretCode == null) throw new Error('Missing secret code');
+
+class Feed extends React.Component<Props, State> {
   state = {
     tweets: [],
     loaded: false,
@@ -56,7 +69,6 @@ class Feed extends React.Component {
     const { match } = this.props;
     const { id } = match.params;
     const url = 'https://twitter-demo.erodionov.ru';
-    const secretCode = process.env.REACT_APP_SECRET_CODE;
 
     fetch(`${url}/api/v1/accounts/${id}/statuses?access_token=${secretCode}`)
       .then(res => res.json())

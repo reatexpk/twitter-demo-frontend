@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { format } from 'date-fns';
@@ -173,6 +174,24 @@ const Tweet = ({
   retweets,
   loved,
   loves,
+}: {
+  avatar: string,
+  content: string,
+  pinned: boolean,
+  name: string,
+  nickname: string,
+  date: string,
+  sharedFromAnotherSite: ?string,
+  previewSource: ?string,
+  previewImageSrc: ?string,
+  previewHeader: ?string,
+  previewText: ?string,
+  media: Array<Object>,
+  comments: number,
+  retweeted: boolean,
+  retweets: number,
+  loved: boolean,
+  loves: number,
 }) => {
   function createMarkup() {
     return { __html: content };

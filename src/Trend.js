@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -25,7 +26,7 @@ const Text = styled.p`
   font-size: 15px;
 `;
 
-const Trend = ({ title, text, count }) => (
+const Trend = ({ title, text, count }: { title: string, text: string, count: number }) => (
   <StyledTrend>
     <StyledLink to={`/search?q=${title}`}>
       {title}
