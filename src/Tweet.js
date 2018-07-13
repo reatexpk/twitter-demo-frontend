@@ -233,7 +233,7 @@ Pinned Tweet
             </Info>
           </Header>
           {!sharedFromAnotherSite && LinkifiedText()}
-          {sharedFromAnotherSite && (
+          {sharedFromAnotherSite && previewSource !== null && previewSource !== undefined && (
             <div>
               {LinkifiedTextSmall()}
               <a href={`https://${previewSource}`}>

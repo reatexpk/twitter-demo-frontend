@@ -40,7 +40,14 @@ const Dot = styled.span`
   color: #66757f;
 `;
 
-const dataTrends = [
+type dataTrend = {
+  id: number,
+  title: string,
+  count?: number,
+  text?: string,
+};
+
+const dataTrends: Array<dataTrend> = [
   {
     id: 1,
     title: '#BringYourDogToWorkDay',
@@ -71,6 +78,12 @@ const dataTrends = [
     count: 6136,
   },
 ];
+
+// if (trend.count !== null && trend.count !== undefined
+//    && trend.text !== null && trend.text !== undefined)
+
+// не знаю, как починить ошибку: как не передавать пропы count и text в Trend (86 строка),
+// если их вообще нет?
 
 const Trends = () => {
   const trendsList = dataTrends.map(trend => (

@@ -52,7 +52,7 @@ const MainContent = (props: Props) => {
         <div className="container">
           <div className="col-lg-offset-3">
             <StatiscticsWrapper>
-              <Tabs userData={userData} />
+              <Tabs userData={userData} match={match} />
               <UserActions />
             </StatiscticsWrapper>
           </div>

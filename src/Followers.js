@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const publicUrl = process.env.PUBLIC_URL;
-if (publicUrl == null) throw new Error('Missing PUBLIC_URL');
+if (publicUrl === null && publicUrl === undefined) throw new Error('Missing PUBLIC_URL');
 
 const StyledFollowers = styled.div`
   margin-left: 2px;

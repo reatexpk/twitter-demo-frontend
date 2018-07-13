@@ -50,7 +50,7 @@ const isMainNavActive = (match, location) => {
   return matches.some(el => el === (location && location.pathname));
 };
 
-const Tabs = ({ userData, match }) => (
+const Tabs = ({ userData, match }: { userData: Object, match: Object }) => (
   <MenuTabs>
     <Tab>
       <StyledNavLink to={`${match.url}`} isActive={isMainNavActive}>

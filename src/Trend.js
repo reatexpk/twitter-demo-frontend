@@ -26,7 +26,7 @@ const Text = styled.p`
   font-size: 15px;
 `;
 
-const Trend = ({ title, text, count }: { title: string, text: string, count: number }) => (
+const Trend = ({ title, count, text }: { title: string, count: number, text: string }) => (
   <StyledTrend>
     <StyledLink to={`/search?q=${title}`}>
       {title}

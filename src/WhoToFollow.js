@@ -34,7 +34,7 @@ const Dot = styled.span`
 `;
 
 const publicUrl = process.env.PUBLIC_URL;
-if (publicUrl == null) throw new Error('Missing PUBLIC_URL');
+if (publicUrl === null && publicUrl === undefined) throw new Error('Missing PUBLIC_URL');
 
 const dataUsers = [
   {
@@ -43,6 +43,7 @@ const dataUsers = [
     img: `${publicUrl}/img/AppleInsider.png`,
     name: 'AppleInsider',
     nickname: '@appleinsider',
+    verificated: true,
   },
   {
     id: 2,
@@ -50,6 +51,7 @@ const dataUsers = [
     img: `${publicUrl}/img/Creode.png`,
     name: 'Creode',
     nickname: '@Creode',
+    verificated: true,
   },
   {
     id: 3,
@@ -57,12 +59,20 @@ const dataUsers = [
     img: `${publicUrl}/img/EpiphanySearch.png`,
     name: 'EpiphanySearch',
     nickname: '@EpiphanySearch',
+    verificated: true,
   },
 ];
 
 const WhoToFollow = () => {
   const whoToFollowList = dataUsers.map(user => (
-    <User key={user.id} href={user.to} src={user.img} name={user.name} nickname={user.nickname} />
+    <User
+      key={user.id}
+      href={user.to}
+      src={user.img}
+      name={user.name}
+      nickname={user.nickname}
+      verificated={user.verificated}
+    />
   ));
 
   return (
