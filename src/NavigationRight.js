@@ -69,7 +69,7 @@ const NavigationRight = () => (
       <SearchButton />
     </SearchBar>
     <Avatar>
-      <img src={`${publicUrl}/img/avatar.png`} alt="avatar" />
+      <img src={`${publicUrl}/img/Avatar.png`} alt="avatar" />
     </Avatar>
     <Button>
 Tweet
