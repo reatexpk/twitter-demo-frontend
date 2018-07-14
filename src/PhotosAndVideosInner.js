@@ -16,7 +16,7 @@ const Image = styled.img`
 `;
 
 const publicUrl = process.env.PUBLIC_URL;
-if (publicUrl === null && publicUrl === undefined) throw new Error('Missing PUBLIC_URL');
+if (publicUrl === null || publicUrl === undefined) throw new Error('Missing PUBLIC_URL');
 
 const dataPhotos = [
   {
