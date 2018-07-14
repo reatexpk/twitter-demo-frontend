@@ -15,7 +15,7 @@ type State = {
 };
 
 const secretCode = process.env.REACT_APP_SECRET_CODE;
-if (secretCode === null || secretCode === undefined) throw new Error('Missing secret code');
+if (!secretCode) throw new Error('Missing secret code');
 
 class Profile extends React.Component<Props, State> {
   state = {
