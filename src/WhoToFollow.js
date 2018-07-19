@@ -34,7 +34,7 @@ const Dot = styled.span`
 `;
 
 const publicUrl = process.env.PUBLIC_URL;
-if (!publicUrl) throw new Error('Missing PUBLIC_URL');
+if (publicUrl === null || publicUrl === undefined) throw new Error('Missing PUBLIC_URL');
 
 const dataUsers = [
   {
