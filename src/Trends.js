@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 
@@ -39,7 +40,14 @@ const Dot = styled.span`
   color: #66757f;
 `;
 
-const dataTrends = [
+type dataTrend = {
+  id: number,
+  title: string,
+  count?: number,
+  text?: string,
+};
+
+const dataTrends: Array<dataTrend> = [
   {
     id: 1,
     title: '#BringYourDogToWorkDay',

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 
@@ -32,33 +33,46 @@ const Dot = styled.span`
   color: #66757f;
 `;
 
+const publicUrl = process.env.PUBLIC_URL;
+if (publicUrl === null || publicUrl === undefined) throw new Error('Missing PUBLIC_URL');
+
 const dataUsers = [
   {
     id: 1,
     to: '/AppleInsider',
-    img: `${process.env.PUBLIC_URL}/img/AppleInsider.png`,
+    img: `${publicUrl}/img/AppleInsider.png`,
     name: 'AppleInsider',
     nickname: '@appleinsider',
+    verificated: true,
   },
   {
     id: 2,
     to: '/Creode',
-    img: `${process.env.PUBLIC_URL}/img/Creode.png`,
+    img: `${publicUrl}/img/Creode.png`,
     name: 'Creode',
     nickname: '@Creode',
+    verificated: true,
   },
   {
     id: 3,
     to: '/EpiphanySearch',
-    img: `${process.env.PUBLIC_URL}/img/EpiphanySearch.png`,
+    img: `${publicUrl}/img/EpiphanySearch.png`,
     name: 'EpiphanySearch',
     nickname: '@EpiphanySearch',
+    verificated: true,
   },
 ];
 
 const WhoToFollow = () => {
   const whoToFollowList = dataUsers.map(user => (
-    <User key={user.id} href={user.to} src={user.img} name={user.name} nickname={user.nickname} />
+    <User
+      key={user.id}
+      href={user.to}
+      src={user.img}
+      name={user.name}
+      nickname={user.nickname}
+      verificated={user.verificated}
+    />
   ));
 
   return (

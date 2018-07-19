@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 
@@ -14,41 +15,44 @@ const Image = styled.img`
   margin-right: 5px;
 `;
 
+const publicUrl = process.env.PUBLIC_URL;
+if (publicUrl === null || publicUrl === undefined) throw new Error('Missing PUBLIC_URL');
+
 const dataPhotos = [
   {
     id: 1,
     to: '/SomeMedia',
-    img: `${process.env.PUBLIC_URL}/img/PAV1.png`,
+    img: `${publicUrl}/img/PAV1.png`,
     description: 'photo',
   },
   {
     id: 2,
     to: '/SomeMedia',
-    img: `${process.env.PUBLIC_URL}/img/PAV2.png`,
+    img: `${publicUrl}/img/PAV2.png`,
     description: 'photo',
   },
   {
     id: 3,
     to: '/SomeMedia',
-    img: `${process.env.PUBLIC_URL}/img/PAV3.png`,
+    img: `${publicUrl}/img/PAV3.png`,
     description: 'photo',
   },
   {
     id: 4,
     to: '/SomeMedia',
-    img: `${process.env.PUBLIC_URL}/img/PAV4.png`,
+    img: `${publicUrl}/img/PAV4.png`,
     description: 'photo',
   },
   {
     id: 5,
     to: '/SomeMedia',
-    img: `${process.env.PUBLIC_URL}/img/PAV5.png`,
+    img: `${publicUrl}/img/PAV5.png`,
     description: 'photo',
   },
   {
     id: 6,
     to: '/SomeMedia',
-    img: `${process.env.PUBLIC_URL}/img/PAV6.png`,
+    img: `${publicUrl}/img/PAV6.png`,
     description: 'photo',
   },
 ];
@@ -56,7 +60,7 @@ const dataPhotos = [
 const PhotosAndVideosInner = () => {
   const photosAndVideosList = dataPhotos.map(media => (
     <Link key={media.id} href={media.to}>
-      <Image src={media.img} alt={media.descr} />
+      <Image src={media.img} alt={media.description} />
     </Link>
   ));
 

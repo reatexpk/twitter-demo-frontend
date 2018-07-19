@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
@@ -111,7 +112,11 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-class ProfileInfo extends React.Component {
+type Props = {
+  userData: Object,
+};
+
+class ProfileInfo extends React.Component<Props> {
   render() {
     const { userData } = this.props;
     function createMarkup() {

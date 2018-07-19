@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import iconMagnifier from './img/icon-magnifier.svg';
@@ -58,6 +59,9 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const publicUrl = process.env.PUBLIC_URL;
+if (publicUrl === null || publicUrl === undefined) throw new Error('Missing PUBLIC_URL');
+
 const NavigationRight = () => (
   <NavRight>
     <SearchBar>
@@ -65,7 +69,7 @@ const NavigationRight = () => (
       <SearchButton />
     </SearchBar>
     <Avatar>
-      <img src={`${process.env.PUBLIC_URL}/img/avatar.png`} alt="avatar" />
+      <img src={`${publicUrl}/img/Avatar.png`} alt="avatar" />
     </Avatar>
     <Button>
 Tweet

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 
@@ -79,7 +80,15 @@ const Link = styled.a`
 `;
 
 const User = ({
-  src, name, verificated, nickname,
+  src,
+  name,
+  verificated,
+  nickname,
+}: {
+  src: string,
+  name: string,
+  verificated: boolean,
+  nickname: string,
 }) => (
   <Container>
     <Link href="/SomeUser">

@@ -1,3 +1,4 @@
+// @flow
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { Switch, Route, withRouter } from 'react-router-dom';
@@ -35,7 +36,13 @@ const RightColumn = styled.div`
   margin-top: 9px;
 `;
 
-const MainContent = ({ match, userData }) => {
+type Props = {
+  userData: Object,
+  match: Object,
+}
+
+const MainContent = (props: Props) => {
+  const { userData, match } = props;
   const { header_static: headerStatic } = userData;
   return (
     <Fragment>
@@ -45,7 +52,7 @@ const MainContent = ({ match, userData }) => {
         <div className="container">
           <div className="col-lg-offset-3">
             <StatiscticsWrapper>
-              <Tabs userData={userData} />
+              <Tabs userData={userData} match={match} />
               <UserActions />
             </StatiscticsWrapper>
           </div>
