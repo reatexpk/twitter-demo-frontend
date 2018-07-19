@@ -79,12 +79,6 @@ const dataTrends: Array<dataTrend> = [
   },
 ];
 
-// if (trend.count !== null && trend.count !== undefined
-//    && trend.text !== null && trend.text !== undefined)
-
-// не знаю, как починить ошибку: как не передавать пропы count и text в Trend (86 строка),
-// если их вообще нет?
-
 const Trends = () => {
   const trendsList = dataTrends.map(trend => (
     <Trend title={trend.title} count={trend.count} text={trend.text} key={trend.id} />
