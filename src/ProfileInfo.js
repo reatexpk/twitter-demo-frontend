@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import { format } from 'date-fns';
+import { connect } from 'react-redux';
 
 import tick from './img/icon-tick.png';
 import iconLocation from './img/icon-location.svg';
@@ -113,32 +114,32 @@ const Button = styled.button`
 `;
 
 type Props = {
-  userData: Object,
+  userInfo: Object,
 };
 
 class ProfileInfo extends React.Component<Props> {
   render() {
-    const { userData } = this.props;
+    const { userInfo } = this.props;
     function createMarkup() {
-      return { __html: userData.note };
+      return { __html: userInfo.note };
     }
     function BioHTML() {
       return <Bio dangerouslySetInnerHTML={createMarkup()} />;
     }
     return (
       <StyledProfileInfo>
-        <Avatar src={userData.avatar_static} />
+        <Avatar src={userInfo.avatar_static} />
         <AvoidWrapper>
           <HeaderWrapper>
             <Header>
-              {userData.display_name}
+              {userInfo.display_name}
             </Header>
             <VerificationTick src={tick} />
           </HeaderWrapper>
           <div>
             <Username>
               @
-              {userData.username}
+              {userInfo.username}
             </Username>
             <FollowsYou>
 Follows you
@@ -151,17 +152,17 @@ Follows you
 London, UK
             </span>
           </Location>
-          <Link href={userData.url}>
+          <Link href={userInfo.url}>
             <Icon src={iconLink} alt="Link" />
             <span>
-              {userData.url}
+              {userInfo.url}
             </span>
           </Link>
           <JoinDate>
             <Icon src={iconJoined} alt="Joined" />
             <span>
               Joined
-              {` ${format(userData.created_at, 'YYYY MMM')}`}
+              {` ${format(userInfo.created_at, 'YYYY MMM')}`}
             </span>
           </JoinDate>
           <Actions>
@@ -178,4 +179,8 @@ Message
   }
 }
 
-export default withRouter(ProfileInfo);
+function mapStateToProps(state) {
+  return { userInfo: state.profile.userInfo };
+}
+
+export default connect(mapStateToProps)(withRouter(ProfileInfo));

@@ -2,12 +2,15 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import addData from './redux/actions';
 
 import MainContent from './MainContent';
 
 type Props = {
   userData: Object,
   match: Object,
+  addDataToStore: Function,
 };
 
 type State = {
@@ -24,12 +27,15 @@ class Profile extends React.Component<Props, State> {
 
   componentDidMount() {
     const url = 'https://twitter-demo.erodionov.ru';
-    const { match } = this.props;
+    const { match, addDataToStore } = this.props;
     const { id } = match.params;
 
     fetch(`${url}/api/v1/accounts/${id}?access_token=${secretCode}`)
       .then(res => res.json())
-      .then(data => this.setState({ userData: data }));
+      .then((data) => {
+        addDataToStore(data);
+        this.setState({ userData: data });
+      });
   }
 
   render() {
@@ -75,4 +81,19 @@ Messages
   }
 }
 
-export default Profile;
+function mapStateToProps(state) {
+  return { userInfo: state };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addDataToStore: (data) => {
+      dispatch(addData(data));
+    },
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Profile);

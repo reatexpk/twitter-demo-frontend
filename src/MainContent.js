@@ -2,6 +2,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import CoverImage from './CoverImage';
 
@@ -39,7 +40,7 @@ const RightColumn = styled.div`
 type Props = {
   userData: Object,
   match: Object,
-}
+};
 
 const MainContent = (props: Props) => {
   const { userData, match } = props;
@@ -132,4 +133,8 @@ Lists
   );
 };
 
-export default withRouter(MainContent);
+function mapStateToProps(state) {
+  return { userInfo: state };
+}
+
+export default connect(mapStateToProps)(withRouter(MainContent));
