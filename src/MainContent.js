@@ -53,7 +53,7 @@ const MainContent = (props: Props) => {
         <div className="container">
           <div className="col-lg-offset-3">
             <StatiscticsWrapper>
-              <Tabs userData={userInfo} match={match} />
+              <Tabs match={match} />
               <UserActions />
             </StatiscticsWrapper>
           </div>
@@ -64,7 +64,7 @@ const MainContent = (props: Props) => {
         <div className="container">
           <MainSectionWrapper>
             <div className="col-lg-3">
-              <ProfileInfo userData={userInfo} />
+              <ProfileInfo />
               <FollowersYouKnow />
               <PhotosAndVideos />
             </div>
@@ -114,7 +114,7 @@ Lists
                 path={`${match.url}`}
                 render={() => (
                   <div className="col-lg-6">
-                    <Route path="/:id" render={() => <Feed />} />
+                    <Route path="/:id" component={Feed} />
                   </div>
                 )}
               />

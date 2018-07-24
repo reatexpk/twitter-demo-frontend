@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const MenuTabs = styled.ul`
   margin: 0px;
@@ -50,7 +51,7 @@ const isMainNavActive = (match, location) => {
   return matches.some(el => el === (location && location.pathname));
 };
 
-const Tabs = ({ userData, match }: { userData: Object, match: Object }) => (
+const Tabs = ({ userInfo, match }: { userInfo: Object, match: Object }) => (
   <MenuTabs>
     <Tab>
       <StyledNavLink to={`${match.url}`} isActive={isMainNavActive}>
@@ -58,7 +59,7 @@ const Tabs = ({ userData, match }: { userData: Object, match: Object }) => (
 Tweets
         </Text>
         <Quantity>
-          {userData.statuses_count}
+          {userInfo.statuses_count}
         </Quantity>
       </StyledNavLink>
     </Tab>
@@ -69,7 +70,7 @@ Tweets
 Following
         </Text>
         <Quantity>
-          {userData.following_count}
+          {userInfo.following_count}
         </Quantity>
       </StyledNavLink>
     </Tab>
@@ -80,7 +81,7 @@ Following
 Followers
         </Text>
         <Quantity>
-          {userData.followers_count}
+          {userInfo.followers_count}
         </Quantity>
       </StyledNavLink>
     </Tab>
@@ -109,4 +110,8 @@ Lists
   </MenuTabs>
 );
 
-export default withRouter(Tabs);
+function mapStateToProps(state) {
+  return { userInfo: state.profile.userInfo };
+}
+
+export default connect(mapStateToProps)(withRouter(Tabs));

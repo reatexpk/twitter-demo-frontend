@@ -120,12 +120,14 @@ type Props = {
 class ProfileInfo extends React.Component<Props> {
   render() {
     const { userInfo } = this.props;
+
     function createMarkup() {
       return { __html: userInfo.note };
     }
     function BioHTML() {
       return <Bio dangerouslySetInnerHTML={createMarkup()} />;
     }
+
     return (
       <StyledProfileInfo>
         <Avatar src={userInfo.avatar_static} />
