@@ -8,23 +8,15 @@ import addData from './redux/actions';
 import MainContent from './MainContent';
 
 type Props = {
-  userData: Object,
+  userInfo: Object,
   match: Object,
   addDataToStore: Function,
-};
-
-type State = {
-  userData: Object,
 };
 
 const secretCode = process.env.REACT_APP_SECRET_CODE;
 if (!secretCode) throw new Error('Missing secret code');
 
-class Profile extends React.Component<Props, State> {
-  state = {
-    userData: {},
-  };
-
+class Profile extends React.Component<Props> {
   componentDidMount() {
     const url = 'https://twitter-demo.erodionov.ru';
     const { match, addDataToStore } = this.props;
@@ -34,18 +26,17 @@ class Profile extends React.Component<Props, State> {
       .then(res => res.json())
       .then((data) => {
         addDataToStore(data);
-        this.setState({ userData: data });
       });
   }
 
   render() {
-    const { userData } = this.state;
+    const { userInfo } = this.props;
     return (
       <Fragment>
         <Helmet>
           <title>
             Twitter |
-            {` ${userData.display_name || ' '}`}
+            {` ${userInfo.display_name || ' '}`}
           </title>
         </Helmet>
 
@@ -74,7 +65,7 @@ Messages
               </h2>
             )}
           />
-          <Route path="/:id" render={props => <MainContent {...props} userData={userData} />} />
+          <Route path="/:id" component={MainContent} />
         </Switch>
       </Fragment>
     );
@@ -82,7 +73,7 @@ Messages
 }
 
 function mapStateToProps(state) {
-  return { userInfo: state };
+  return { userInfo: state.profile.userInfo };
 }
 
 function mapDispatchToProps(dispatch) {
