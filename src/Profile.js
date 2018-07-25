@@ -2,44 +2,33 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { userInfoFetchData } from './redux/actions';
 
 import MainContent from './MainContent';
 
 type Props = {
-  userData: Object,
+  userInfo: Object,
   match: Object,
+  fetchData: Function,
 };
 
-type State = {
-  userData: Object,
-};
-
-const secretCode = process.env.REACT_APP_SECRET_CODE;
-if (!secretCode) throw new Error('Missing secret code');
-
-class Profile extends React.Component<Props, State> {
-  state = {
-    userData: {},
-  };
-
+class Profile extends React.Component<Props> {
   componentDidMount() {
-    const url = 'https://twitter-demo.erodionov.ru';
-    const { match } = this.props;
+    const { match, fetchData } = this.props;
     const { id } = match.params;
 
-    fetch(`${url}/api/v1/accounts/${id}?access_token=${secretCode}`)
-      .then(res => res.json())
-      .then(data => this.setState({ userData: data }));
+    fetchData(id);
   }
 
   render() {
-    const { userData } = this.state;
+    const { userInfo } = this.props;
     return (
       <Fragment>
         <Helmet>
           <title>
             Twitter |
-            {` ${userData.display_name || ' '}`}
+            {` ${userInfo.display_name || ' '}`}
           </title>
         </Helmet>
 
@@ -68,11 +57,28 @@ Messages
               </h2>
             )}
           />
-          <Route path="/:id" render={props => <MainContent {...props} userData={userData} />} />
+          <Route path="/:id" component={MainContent} />
         </Switch>
       </Fragment>
     );
   }
 }
 
-export default Profile;
+function mapStateToProps(state) {
+  return {
+    userInfo: state.profile.userInfo,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchData: (url, id) => {
+      dispatch(userInfoFetchData(url, id));
+    },
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Profile);

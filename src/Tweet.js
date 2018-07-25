@@ -227,32 +227,33 @@ Pinned Tweet
             </Poster>
             <Info>
               {`@${nickname}`}
-              {' '}
-•
+              &nbsp; • &nbsp;
               {format(date, 'DD MMM')}
             </Info>
           </Header>
           {!sharedFromAnotherSite && LinkifiedText()}
-          {sharedFromAnotherSite && previewSource !== null && previewSource !== undefined && (
-            <div>
-              {LinkifiedTextSmall()}
-              <a href={`https://${previewSource}`}>
-                <Preview>
-                  <PreviewImage src={previewImageSrc} />
-                  <PreviewBody>
-                    <PreviewHeader>
-                      {previewHeader}
-                    </PreviewHeader>
-                    <PreviewText>
-                      {previewText}
-                    </PreviewText>
-                    <PreviewSource>
-                      {previewSource}
-                    </PreviewSource>
-                  </PreviewBody>
-                </Preview>
-              </a>
-            </div>
+          {sharedFromAnotherSite
+            && previewSource !== null
+            && previewSource !== undefined && (
+              <div>
+                {LinkifiedTextSmall()}
+                <a href={`https://${previewSource}`}>
+                  <Preview>
+                    <PreviewImage src={previewImageSrc} />
+                    <PreviewBody>
+                      <PreviewHeader>
+                        {previewHeader}
+                      </PreviewHeader>
+                      <PreviewText>
+                        {previewText}
+                      </PreviewText>
+                      <PreviewSource>
+                        {previewSource}
+                      </PreviewSource>
+                    </PreviewBody>
+                  </Preview>
+                </a>
+              </div>
           )}
           {media.length !== 0 && mediaList}
           <Actions>

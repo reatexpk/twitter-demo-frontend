@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import iconMagnifier from './img/icon-magnifier.svg';
 
 const NavRight = styled.div`
@@ -44,6 +45,11 @@ const Avatar = styled.div`
   cursor: pointer;
 `;
 
+const Image = styled.img`
+  height: 100%;
+  border-radius: 100%;
+`;
+
 const Button = styled.button`
   padding: 8px 16px 8px 16px;
   box-sizing: border-box;
@@ -62,14 +68,14 @@ const Button = styled.button`
 const publicUrl = process.env.PUBLIC_URL;
 if (publicUrl === null || publicUrl === undefined) throw new Error('Missing PUBLIC_URL');
 
-const NavigationRight = () => (
+const NavigationRight = ({ userInfo }: { userInfo: Object }) => (
   <NavRight>
     <SearchBar>
       <SearchInput placeholder="Search Twitter" />
       <SearchButton />
     </SearchBar>
     <Avatar>
-      <img src={`${publicUrl}/img/Avatar.png`} alt="avatar" />
+      <Image src={userInfo.avatar_static} alt="avatar" />
     </Avatar>
     <Button>
 Tweet
@@ -77,4 +83,8 @@ Tweet
   </NavRight>
 );
 
-export default NavigationRight;
+function mapStateToProps(state) {
+  return { userInfo: state.profile.userInfo };
+}
+
+export default connect(mapStateToProps)(NavigationRight);

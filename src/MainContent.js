@@ -2,6 +2,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import CoverImage from './CoverImage';
 
@@ -37,13 +38,13 @@ const RightColumn = styled.div`
 `;
 
 type Props = {
-  userData: Object,
+  userInfo: Object,
   match: Object,
-}
+};
 
 const MainContent = (props: Props) => {
-  const { userData, match } = props;
-  const { header_static: headerStatic } = userData;
+  const { userInfo, match } = props;
+  const { header_static: headerStatic } = userInfo;
   return (
     <Fragment>
       <CoverImage src={headerStatic} />
@@ -52,7 +53,7 @@ const MainContent = (props: Props) => {
         <div className="container">
           <div className="col-lg-offset-3">
             <StatiscticsWrapper>
-              <Tabs userData={userData} match={match} />
+              <Tabs match={match} />
               <UserActions />
             </StatiscticsWrapper>
           </div>
@@ -63,7 +64,7 @@ const MainContent = (props: Props) => {
         <div className="container">
           <MainSectionWrapper>
             <div className="col-lg-3">
-              <ProfileInfo userData={userData} />
+              <ProfileInfo />
               <FollowersYouKnow />
               <PhotosAndVideos />
             </div>
@@ -113,7 +114,7 @@ Lists
                 path={`${match.url}`}
                 render={() => (
                   <div className="col-lg-6">
-                    <Route path="/:id" render={() => <Feed />} />
+                    <Route path="/:id" component={Feed} />
                   </div>
                 )}
               />
@@ -132,4 +133,8 @@ Lists
   );
 };
 
-export default withRouter(MainContent);
+function mapStateToProps(state) {
+  return { userInfo: state.profile.userInfo };
+}
+
+export default connect(mapStateToProps)(withRouter(MainContent));
