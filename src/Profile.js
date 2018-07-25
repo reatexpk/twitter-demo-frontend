@@ -3,14 +3,14 @@ import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import addData from './redux/actions';
+import { userInfoFetchData } from './redux/actions';
 
 import MainContent from './MainContent';
 
 type Props = {
   userInfo: Object,
   match: Object,
-  addDataToStore: Function,
+  fetchData: Function,
 };
 
 const secretCode = process.env.REACT_APP_SECRET_CODE;
@@ -18,15 +18,10 @@ if (!secretCode) throw new Error('Missing secret code');
 
 class Profile extends React.Component<Props> {
   componentDidMount() {
-    const url = 'https://twitter-demo.erodionov.ru';
-    const { match, addDataToStore } = this.props;
+    const { match, fetchData } = this.props;
     const { id } = match.params;
 
-    fetch(`${url}/api/v1/accounts/${id}?access_token=${secretCode}`)
-      .then(res => res.json())
-      .then((data) => {
-        addDataToStore(data);
-      });
+    fetchData('https://twitter-demo.erodionov.ru', id);
   }
 
   render() {
@@ -73,13 +68,15 @@ Messages
 }
 
 function mapStateToProps(state) {
-  return { userInfo: state.profile.userInfo };
+  return {
+    userInfo: state.profile.userInfo,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    addDataToStore: (data) => {
-      dispatch(addData(data));
+    fetchData: (url, id) => {
+      dispatch(userInfoFetchData(url, id));
     },
   };
 }

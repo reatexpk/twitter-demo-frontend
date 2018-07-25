@@ -2,16 +2,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import rootReducer from './redux/reducers';
+import configureStore from './redux/configureStore';
 
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import 'normalize.css';
 import 'flexboxgrid2';
 
-const store = createStore(rootReducer);
-store.subscribe(store.getState);
+const store = configureStore();
+
 const root = document.getElementById('root');
 
 if (root !== null) {
