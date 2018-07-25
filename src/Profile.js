@@ -13,9 +13,6 @@ type Props = {
   fetchData: Function,
 };
 
-const secretCode = process.env.REACT_APP_SECRET_CODE;
-if (!secretCode) throw new Error('Missing secret code');
-
 class Profile extends React.Component<Props> {
   componentDidMount() {
     const { match, fetchData } = this.props;
