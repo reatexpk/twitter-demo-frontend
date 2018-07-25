@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import {
   Switch, Route, withRouter, NavLink,
 } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { tweetsFetchData } from './redux/actions';
 
 import Tweet from './Tweet';
 
@@ -47,40 +49,27 @@ const NoTweetsYet = styled.h2`
   padding: 20px;
 `;
 
-type State = {
-  tweets: Array<Object>,
-  loaded: boolean,
-};
-
 type Props = {
   match: Object,
+  tweets: Array<Object>,
+  fetchData: Function,
 };
 
 const secretCode = process.env.REACT_APP_SECRET_CODE;
 if (!secretCode) throw new Error('Missing secret code');
 
-class Feed extends React.Component<Props, State> {
-  state = {
-    tweets: [],
-    loaded: false,
-  };
-
+class Feed extends React.Component<Props> {
   componentDidMount() {
-    const { match } = this.props;
+    const { match, fetchData } = this.props;
     const { id } = match.params;
-    const url = 'https://twitter-demo.erodionov.ru';
 
-    fetch(`${url}/api/v1/accounts/${id}/statuses?access_token=${secretCode}`)
-      .then(res => res.json())
-      .then(data => this.setState({
-        tweets: data,
-        loaded: true,
-      }));
+    fetchData(id);
   }
 
   render() {
-    const { tweets, loaded } = this.state;
-    const { match } = this.props;
+    const {
+      match, tweets, hasErrored, isLoading,
+    } = this.props;
     const tweetsList = tweets.map(tweet => (
       <Tweet
         key={tweet.id}
@@ -146,10 +135,24 @@ Media
           <Route
             path={`${match.url}`}
             render={() => {
-              if (tweets.length === 0 && loaded) {
+              if (isLoading) {
+                return (
+                  <NoTweetsYet>
+Loading...
+                  </NoTweetsYet>
+                );
+              }
+              if (tweets && tweets.length === 0) {
                 return (
                   <NoTweetsYet>
 There are no tweets yet :(
+                  </NoTweetsYet>
+                );
+              }
+              if (hasErrored) {
+                return (
+                  <NoTweetsYet>
+Something went wrong
                   </NoTweetsYet>
                 );
               }
@@ -162,4 +165,23 @@ There are no tweets yet :(
   }
 }
 
-export default withRouter(Feed);
+function mapStateToProps(state) {
+  return {
+    tweets: state.tweets.tweets,
+    hasErrored: state.hasErrored,
+    isLoading: state.tweets.isLoading,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchData: (url, id) => {
+      dispatch(tweetsFetchData(url, id));
+    },
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withRouter(Feed));

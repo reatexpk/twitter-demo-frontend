@@ -18,7 +18,7 @@ class Profile extends React.Component<Props> {
     const { match, fetchData } = this.props;
     const { id } = match.params;
 
-    fetchData('https://twitter-demo.erodionov.ru', id);
+    fetchData(id);
   }
 
   render() {
